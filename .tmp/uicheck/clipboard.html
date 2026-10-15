@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="csrf" content="7b6574f3d237c4496e1d5d83f541aa5c">
+<title>Clipboard metrics · CTTIme</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="mark">Z</span><span>CTTIme</span><span class="sub">endpoint visibility</span></div>
+  <div class="session"><span class="who">itadmin</span><button class="linklike" data-action="logout" type="button">Sign out</button></div>
+</header>
+<nav class="tabs"><a class="navitem" href="index.html">Overview<span class="navcount">1</span></a><a class="navitem" href="screenshots.html">Screenshots</a><a class="navitem" href="extensions.html">Extensions</a><a class="navitem active" href="clipboard.html">Clipboard</a><a class="navitem" href="health.html">Telemetry health</a><a class="navitem" href="audit.html">Audit log</a><a class="navitem" href="policy.html">Policy</a></nav>
+
+<main>
+<section class="region" data-region="clipboard" data-livepoll="/fragments/clipboard">
+  <div class="regionhead"><h2>Clipboard metrics</h2>
+    <div class="noticebox"><strong>No content exists to be shown here.</strong> The agent hashes
+      the clipboard in memory and transmits only the character count, the digest and a coarse kind
+      label. There is no column, log line or spool record in the product capable of holding
+      clipboard text, and requests that try to send one are rejected with <code>422</code>.</div>
+    <form class="filters" method="get" action="/clipboard"><label class="filter"><span>Device</span><select name="device"><option value="">All devices</option><option value="87bf5c99-1aa6-4646-9be7-097720e41bba">LT-MKT-0455</option><option value="3125ffb1-bfbf-4614-9a6f-6d93d09d14fb">WS-ENG-1146</option><option value="566d3452-e000-43c1-80bd-c5d1500836c9">WS-FIN-0213</option><option value="26d0ddf3-055f-4633-9a39-e6fca13a8187">WS-HR-0087</option></select></label>
+    <button type="submit" class="btn">Apply</button></form></div>
+  <table class="compact hist"><thead><tr><th>Kind</th><th class="num">Samples</th>
+    <th class="num">Mean chars</th><th class="num">Min</th><th class="num">Max</th></tr></thead>
+    <tbody><tr><td>text</td>
+    <td class="num">25</td><td class="num">456</td>
+    <td class="num">0</td><td class="num">4,096</td></tr></tbody></table>
+  <h3>Recent samples</h3>
+  <table><thead><tr><th>Sampled</th><th>Device</th><th class="num">Chars</th><th>Kind</th>
+    <th>SHA-256 (truncated)</th></tr></thead>
+    <tbody><tr>
+    <td><time class="t" datetime="2026-10-15T12:39:17.088Z">2026-10-15 12:39Z</time><span class="rel" data-at="2026-10-15T12:39:17.088Z">2h ago</span></td>
+    <td><a class="host" href="device-WS-HR-0087.html">WS-HR-0087</a></td>
+    <td class="num">88</td>
+    <td>text</td>
+    <td class="mono">f81793e950774d67941ca1c9</td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T12:24:17.088Z">2026-10-15 12:24Z</time><span class="rel" data-at="2026-10-15T12:24:17.088Z">2h ago</span></td>
+    <td><a class="host" href="device-WS-HR-0087.html">WS-HR-0087</a></td>
+    <td class="num">0</td>
+    <td>text</td>
+    <td class="mono">a12a040bdaa635d841736c9c</td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T12:09:17.088Z">2026-10-15 12:09Z</time><span class="rel" data-at="2026-10-15T12:09:17.088Z">2h ago</span></td>
+    <td><a class="host" href="device-WS-HR-0087.html">WS-HR-0087</a></td>
+    <td class="num">12</td>
+    <td>text</td>
+    <td class="mono">d53f9d82b5e3481436b2ddec</td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T11:54:17.088Z">2026-10-15 11:54Z</time><span class="rel" data-at="2026-10-15T11:54:17.088Z">3h ago</span></td>
+    <td><a class="host" href="device-WS-HR-0087.html">WS-HR-0087</a></td>
+    <td class="num">88</td>
+    <td>text</td>
+    <td class="mono">be3ff1f2c5efb068fd2da570</td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T11:39:17.088Z">2026-10-15 11:39Z</time><span class="rel" data-at="2026-10-15T11:39:17.088Z">3h ago</span></td>
+    <td><a class="host" href="device-WS-HR-0087.html">WS-HR-0087</a></td>
+    <td class="num">0</td>
+    <td>text</td>
+    <td class="mono">05b302594772a4f7e98fce44</td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T13:24:16.990Z">2026-10-15 13:24Z</time><span class="rel" data-at="2026-10-15T13:24:16.990Z">1h ago</span></td>
+    <td><a class="host" href="device-LT-MKT-0455.html">LT-MKT-0455</a></td>
+    <td class="num">44</td>
+    <td>text</td>
+    <td class="mono">ad9935fd7325262008007728</td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T13:15:16.990Z">2026-10-15 13:15Z</time><span class="rel" data-at="2026-10-15T13:15:16.990Z">1h ago</span></td>
+    <td><a class="host" href="device-LT-MKT-0455.html">LT-MKT-0455</a></td>
+    <td class="num">1,500</td>
+    <td>text</td>
+    <td class="mono">37a941a79f9e2ba2d5afc983</td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T13:06:16.990Z">2026-10-15 13:06Z</time><span class="rel" data-at="2026-10-15T13:06:16.990Z">1h ago</span></td>
+    <td><a class="host" href="device-LT-MKT-0455.html">LT-MKT-0455</a></td>
+    <td class="num">78</td>
+    <td>text</td>
+    <td class="mono">6fab64d39d7a891f2678bbd1</td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T12:57:16.990Z">2026-10-15 12:57Z</time><span class="rel" data-at="2026-10-15T12:57:16.990Z">2h ago</span></td>
+    <td><a class="host" href="device-LT-MKT-0455.html">LT-MKT-0455</a></td>
+    <td class="num">340</td>
+    <td>text</td>
+    <td class="mono">6c4805dc9af3c6c7c4b86a21</td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T12:48:16.990Z">2026-10-15 12:48Z</time><span class="rel" data-at="2026-10-15T12:48:16.990Z">2h ago</span></td>
+    <td><a class="host" href="device-LT-MKT-0455.html">LT-MKT-0455</a></td>
+    <td class="num">0</td>
+    <td>text</td>
+    <td class="mono">70e05b80ef83abb067601585</td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T12:39:16.990Z">2026-10-15 12:39Z</time><span class="rel" data-at="2026-10-15T12:39:16.990Z">2h ago</span></td>
+    <td><a class="host" href="device-LT-MKT-0455.html">LT-MKT-0455</a></td>
+    <td class="num">12</td>
+    <td>text</td>
+    <td class="mono">4e3c388fbc4ac816a672a6c7</td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T12:35:10.906Z">2026-10-15 12:35Z</time><span class="rel" data-at="2026-10-15T12:35:10.906Z">2h ago</span></td>
+    <td><a class="host" href="device-WS-ENG-1146.html">WS-ENG-1146</a></td>
+    <td class="num">9</td>
+    <td>text</td>
+    <td class="mono">c16f007f1b5af003cac9fba6</td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T12:23:10.906Z">2026-10-15 12:23Z</time><span class="rel" data-at="2026-10-15T12:23:10.906Z">2h ago</span></td>
+    <td><a class="host" href="device-WS-ENG-1146.html">WS-ENG-1146</a></td>
+    <td class="num">58</td>
+    <td>text</td>
+    <td class="mono">a9b58c8f278e7b85d79d16d7</td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T12:11:10.906Z">2026-10-15 12:11Z</time><span class="rel" data-at="2026-10-15T12:11:10.906Z">2h ago</span></td>
+    <td><a class="host" href="device-WS-ENG-1146.html">WS-ENG-1146</a></td>
+    <td class="num">312</td>
+    <td>text</td>
+    <td class="mono">04f9ed988bc272bcdc012021</td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T11:59:10.906Z">2026-10-15 11:59Z</time><span class="rel" data-at="2026-10-15T11:59:10.906Z">3h ago</span></td>
+    <td><a class="host" href="device-WS-ENG-1146.html">WS-ENG-1146</a></td>
+    <td class="num">4,096</td>
+    <td>text</td>
+    <td class="mono">1024d53722461e9f7d7b39c2</td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T11:47:10.906Z">2026-10-15 11:47Z</time><span class="rel" data-at="2026-10-15T11:47:10.906Z">3h ago</span></td>
+    <td><a class="host" href="device-WS-ENG-1146.html">WS-ENG-1146</a></td>
+    <td class="num">118</td>
+    <td>text</td>
+    <td class="mono">f2182ae6c3461d64c5b1a6f9</td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T11:35:10.906Z">2026-10-15 11:35Z</time><span class="rel" data-at="2026-10-15T11:35:10.906Z">3h ago</span></td>
+    <td><a class="host" href="device-WS-ENG-1146.html">WS-ENG-1146</a></td>
+    <td class="num">24</td>
+    <td>text</td>
+    <td class="mono">f1ccfff5e7e55a6ddd74deb8</td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T11:23:10.906Z">2026-10-15 11:23Z</time><span class="rel" data-at="2026-10-15T11:23:10.906Z">3h ago</span></td>
+    <td><a class="host" href="device-WS-ENG-1146.html">WS-ENG-1146</a></td>
+    <td class="num">0</td>
+    <td>text</td>
+    <td class="mono">754440ab19fbf9d954935f37</td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T11:11:10.906Z">2026-10-15 11:11Z</time><span class="rel" data-at="2026-10-15T11:11:10.906Z">3h ago</span></td>
+    <td><a class="host" href="device-WS-ENG-1146.html">WS-ENG-1146</a></td>
+    <td class="num">9</td>
+    <td>text</td>
+    <td class="mono">9de5420390aa988fcbcdbc9f</td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T10:59:10.906Z">2026-10-15 10:59Z</time><span class="rel" data-at="2026-10-15T10:59:10.906Z">4h ago</span></td>
+    <td><a class="host" href="device-WS-ENG-1146.html">WS-ENG-1146</a></td>
+    <td class="num">58</td>
+    <td>text</td>
+    <td class="mono">6dbae21ac82ce860121631dd</td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T10:47:10.906Z">2026-10-15 10:47Z</time><span class="rel" data-at="2026-10-15T10:47:10.906Z">4h ago</span></td>
+    <td><a class="host" href="device-WS-ENG-1146.html">WS-ENG-1146</a></td>
+    <td class="num">312</td>
+    <td>text</td>
+    <td class="mono">70f862f330043ec38b64b1ab</td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T10:35:10.906Z">2026-10-15 10:35Z</time><span class="rel" data-at="2026-10-15T10:35:10.906Z">4h ago</span></td>
+    <td><a class="host" href="device-WS-ENG-1146.html">WS-ENG-1146</a></td>
+    <td class="num">4,096</td>
+    <td>text</td>
+    <td class="mono">7dd4de95e217721f869b54e5</td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T10:23:10.906Z">2026-10-15 10:23Z</time><span class="rel" data-at="2026-10-15T10:23:10.906Z">4h ago</span></td>
+    <td><a class="host" href="device-WS-ENG-1146.html">WS-ENG-1146</a></td>
+    <td class="num">118</td>
+    <td>text</td>
+    <td class="mono">1a1fcd1eeba1a7ba19064a84</td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T10:11:10.906Z">2026-10-15 10:11Z</time><span class="rel" data-at="2026-10-15T10:11:10.906Z">4h ago</span></td>
+    <td><a class="host" href="device-WS-ENG-1146.html">WS-ENG-1146</a></td>
+    <td class="num">24</td>
+    <td>text</td>
+    <td class="mono">3dca30472f4c57dbe6c859c0</td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T09:59:10.906Z">2026-10-15 09:59Z</time><span class="rel" data-at="2026-10-15T09:59:10.906Z">5h ago</span></td>
+    <td><a class="host" href="device-WS-ENG-1146.html">WS-ENG-1146</a></td>
+    <td class="num">0</td>
+    <td>text</td>
+    <td class="mono">f4170224de38c478f68248d7</td>
+  </tr></tbody></table>
+  
+</section>
+</main>
+<footer class="foot">
+  <p><strong>Disclosed monitoring.</strong> Agents run as a named Task Scheduler job
+    &ldquo;CTTIme Endpoint Visibility&rdquo;, write a local log, and can be uninstalled with
+    uninstall.ps1. Clipboard content is never collected: only a character count, a SHA-256 and a
+    kind label. Screenshots are never analysed by OCR or image recognition.
+    Notice version in force: <code>2026-10-15.1</code>.</p>
+</footer>
+<script src="app.js" defer></script>
+</body>
+</html>

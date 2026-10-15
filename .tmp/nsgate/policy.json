@@ -1,0 +1,20 @@
+{
+  "etag": "\"5815fa6b03d56db3\"",
+  "values": {
+    "screenshot_interval_minutes": 5,
+    "screenshot_retention_days": 30,
+    "screenshot_max_bytes": 8388608,
+    "clipboard_metrics_enabled": true,
+    "extension_inventory_enabled": true,
+    "clipboard_sample_seconds": 60,
+    "heartbeat_interval_seconds": 300,
+    "batch_max_items": 200,
+    "batch_max_bytes": 262144,
+    "batch_max_age_seconds": 120,
+    "spool_max_bytes": 134217728,
+    "skip_when_locked": true,
+    "idle_skip_seconds": 600,
+    "dedupe_unchanged_frames": true,
+    "ext_inventory_max_age_hours": 24
+  }
+}

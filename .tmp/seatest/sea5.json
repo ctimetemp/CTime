@@ -1,0 +1,1 @@
+{ "main": "plain.cjs", "output": "t4.exe", "disableExperimentalSEAWarning": true, "assets": { "agent/lib.js": "lib.js" } }

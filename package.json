@@ -1,0 +1,14 @@
+{
+  "name": "CTTIme-endpoint-visibility",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Disclosed endpoint-monitoring collector and agent for company-managed Windows devices. Zero runtime dependencies.",
+  "engines": { "node": ">=22.5.0" },
+  "scripts": {
+    "collector": "node server/index.js",
+    "agent": "node agent/index.js",
+    "test": "node test/run.js",
+    "perf": "node scripts/perf-bench.js"
+  }
+}

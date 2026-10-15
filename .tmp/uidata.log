@@ -1,0 +1,14 @@
+[collector] seeded admin account: itadmin
+
+  CTTIme collector
+  listening      https://127.0.0.1:8470
+  connect via    https://127.0.0.1:8470   (bound to one interface only)
+                 loopback: only this machine can reach it. To serve the LAN,
+                 start with CTTIme_BIND=<this machine's LAN address>.
+  database       D:\CTTIme\.tmp\uidata\collector.db
+  screenshots    D:\CTTIme\.tmp\uidata\screenshots
+  cert SHA-256   a753c14117ea33f55285821a1a5b6831a303a41db3fa1764bb862dd4a6d2bae3
+
+  Pin that fingerprint in the agent (--pin <hex>). There is no plaintext fallback
+  and no negotiated downgrade if it does not match.
+

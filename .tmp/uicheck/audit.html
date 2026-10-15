@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="csrf" content="0cfc0de312333e233be1a2fb78518a23">
+<title>Audit log · CTTIme</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="mark">Z</span><span>CTTIme</span><span class="sub">endpoint visibility</span></div>
+  <div class="session"><span class="who">itadmin</span><button class="linklike" data-action="logout" type="button">Sign out</button></div>
+</header>
+<nav class="tabs"><a class="navitem" href="/">Overview<span class="navcount">1</span></a><a class="navitem" href="/screenshots">Screenshots</a><a class="navitem" href="/extensions">Extensions</a><a class="navitem" href="/clipboard">Clipboard</a><a class="navitem" href="/health">Telemetry health</a><a class="navitem active" href="/audit">Audit log</a><a class="navitem" href="/policy">Policy</a><a class="navitem" href="/help">Help</a></nav>
+
+<main>
+<section class="region" data-region="audit" data-poll="/fragments/audit">
+  <div class="regionhead"><h2>Audit log</h2>
+    <p class="hint">Append-only record of consent decisions, approvals, revocations, policy writes,
+      exports and every screenshot view. Detail cells carry ids, key names and counts &mdash; never
+      request bodies, tokens or clipboard text.</p>
+    </div>
+  <table><thead><tr><th>When</th><th>Actor</th><th>Action</th><th>Target</th><th>Detail</th><th>IP</th></tr></thead>
+    <tbody><tr>
+    <td><time class="t" datetime="2026-10-15T18:53:56.000Z">2026-10-15 18:53Z</time><span class="rel" data-at="2026-10-15T18:53:56.000Z">0s ago</span></td>
+    <td>itadmin</td>
+    <td><span class="action">login</span></td>
+    <td>—</td>
+    <td class="detail"></td>
+    <td class="mono">127.0.0.1</td>
+  </tr></tbody></table>
+  
+</section>
+</main>
+<footer class="foot">
+  <p><strong>Disclosed monitoring.</strong> Agents run as a named Task Scheduler job
+    &ldquo;CTTIme Endpoint Visibility&rdquo;, write a local log, and can be uninstalled with
+    uninstall.ps1. Clipboard content is never collected: only a character count, a SHA-256 and a
+    kind label. Screenshots are never analysed by OCR or image recognition.
+    Notice version in force: <code>2026-10-15.1</code>.</p>
+</footer>
+<script src="app.js" defer></script>
+</body>
+</html>

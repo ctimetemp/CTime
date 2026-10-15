@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="csrf" content="0cfc0de312333e233be1a2fb78518a23">
+<title>HR-LT-088 · CTTIme</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="mark">Z</span><span>CTTIme</span><span class="sub">endpoint visibility</span></div>
+  <div class="session"><span class="who">itadmin</span><button class="linklike" data-action="logout" type="button">Sign out</button></div>
+</header>
+<nav class="tabs"><a class="navitem active" href="/">Overview<span class="navcount">1</span></a><a class="navitem" href="/screenshots">Screenshots</a><a class="navitem" href="/extensions">Extensions</a><a class="navitem" href="/clipboard">Clipboard</a><a class="navitem" href="/health">Telemetry health</a><a class="navitem" href="/audit">Audit log</a><a class="navitem" href="/policy">Policy</a><a class="navitem" href="/help">Help</a></nav>
+
+<main>
+<section class="region">
+  <div class="regionhead"><h2><a href="/" class="crumb">Devices</a> / HR-LT-088</h2>
+    <div class="stateline"><span class="badge b-revoked">Revoked</span> <span class="chip chip-bad" title="Collection stopped. The device row and its consent record are kept as evidence.">Revoked</span>
+      <span class="dot"></span>last seen <span class="rel" data-at="2026-10-15T07:42:50.000Z">11h ago</span>
+      <span class="dot"></span>10.20.4.15
+      <span class="dot"></span>agent 1.0.0
+      <span class="pill stale">policy stale</span>
+      <span class="pill warn">12 dropped</span>
+    </div><div class="actions">
+    
+    
+    
+    <a class="btn" href="/devices/a33fe0ca-c1b4-428c-888f-0b5879212239?verify=1">Confirm this device</a>
+    <button type="button" class="btn" data-action="reenable" data-id="a33fe0ca-c1b4-428c-888f-0b5879212239" data-name="HR-LT-088">Re-enable (needs re-acknowledgment)</button>
+    <button type="button" class="btn" data-action="export" data-id="a33fe0ca-c1b4-428c-888f-0b5879212239" data-name="HR-LT-088">Export all data (JSON)</button>
+  </div></div>
+  <div class="twocol">
+    <div>
+      <h3>Identity</h3>
+      <div class="kvlist">
+        <div class="kv"><span class="k">Device id</span><span class="v "><span class="mono">a33fe0ca-c1b4-428c-888f-0b5879212239</span></span></div>
+        <div class="kv"><span class="k">Device user</span><span class="v ">hr.user</span></div>
+        <div class="kv"><span class="k">OS build</span><span class="v ">10.0.26200 x64</span></div>
+        <div class="kv"><span class="k">Enrolled</span><span class="v "><time class="t" datetime="2026-10-15T18:52:50.000Z">2026-10-15 18:52Z</time></span></div>
+        <div class="kv"><span class="k">Policy etag</span><span class="v "><span class="mono">&quot;seed&quot;</span></span></div>
+        <div class="kv"><span class="k">Current etag</span><span class="v "><span class="mono">&quot;5815fa6b03d56db3&quot;</span></span></div>
+        <div class="kv"><span class="k">Spool</span><span class="v ">3.0 MiB · 12 dropped</span></div>
+        <div class="kv"><span class="k">Last flush</span><span class="v "><span class="t muted">—</span> · — ms</span></div>
+      </div>
+      <h3>Consent record</h3><div class="consent revoked">
+        <div class="kv"><span class="k">Acknowledged by</span><span class="v ">SYNTHETIC UI REVIEW - not a real person</span></div>
+        <div class="kv"><span class="k">Acknowledged at</span><span class="v "><time class="t" datetime="2026-10-15T17:22:50.000Z">2026-10-15 17:22Z</time></span></div>
+        <div class="kv"><span class="k">Notice version</span><span class="v ">2026-10-15.1</span></div>
+        <div class="kv"><span class="k">Approved by</span><span class="v ">itadmin</span></div>
+        <div class="kv"><span class="k">Approved at</span><span class="v "><time class="t" datetime="2026-10-15T17:32:50.000Z">2026-10-15 17:32Z</time></span></div>
+        <div class="kv"><span class="k">Revoked by</span><span class="v ">—</span></div>
+        <div class="kv"><span class="k">Revoked at</span><span class="v "><span class="t muted">—</span></span></div>
+        <div class="kv"><span class="k">Reason</span><span class="v ">—</span></div>
+        <p class="hint">Re-enabling a revoked device does not carry consent over: approval is
+          refused until the device user acknowledges the notice again.</p>
+      </div>
+      <h3>Round trip</h3>
+      <div class="verify">
+        <p class="verdict v-bad">
+          <strong>Revoked</strong>
+          <span class="sub">Collection stopped. The device row and its consent record are kept as evidence.</span></p>
+        <ol class="steps">
+          <li class="done">
+            <span class="tick">&#10003;</span>
+            <div><strong>Notice acknowledged on the device</strong>
+              <span class="sub"><time class="t" datetime="2026-10-15T17:22:50.000Z">2026-10-15 17:22Z</time></span></div>
+          </li><li class="done">
+            <span class="tick">&#10003;</span>
+            <div><strong>Approved by an administrator</strong>
+              <span class="sub"><time class="t" datetime="2026-10-15T17:32:50.000Z">2026-10-15 17:32Z</time></span></div>
+          </li><li class="done">
+            <span class="tick">&#10003;</span>
+            <div><strong>Agent collected its device token</strong>
+              <span class="sub"><time class="t" datetime="2026-10-15T03:52:50.000Z">2026-10-15 03:52Z</time></span></div>
+          </li><li class="done">
+            <span class="tick">&#10003;</span>
+            <div><strong>Agent called in with that token</strong>
+              <span class="sub"><time class="t" datetime="2026-10-15T03:53:50.000Z">2026-10-15 03:53Z</time></span></div>
+          </li><li class="done">
+            <span class="tick">&#10003;</span>
+            <div><strong>Collector accepted data from it</strong>
+              <span class="sub"><time class="t" datetime="2026-10-15T03:54:50.000Z">2026-10-15 03:54Z</time></span></div>
+          </li>
+        </ol>
+      </div>
+      <h3>Volumes</h3>
+      <div class="kvlist">
+        <div class="kv"><span class="k">Screenshots</span><span class="v ">1</span></div>
+        <div class="kv"><span class="k">Screen states</span><span class="v ">1</span></div>
+        <div class="kv"><span class="k">Clipboard samples</span><span class="v ">1</span></div>
+        <div class="kv"><span class="k">Extension rows</span><span class="v ">1 · last <span class="rel" data-at="2026-10-15T18:47:50.000Z">6m ago</span></span></div>
+      </div>
+    </div>
+    <div>
+      <h3>Recent screenshots <span class="sub">1 total</span></h3>
+      <div class="thumbs"><a class="thumb" href="/media/screenshots/2" target="_blank" rel="noopener">
+      <img loading="lazy" src="/media/screenshots/2" alt="screenshot 1c3e58e7-634d-4a86-a434-f7637fcd0fe5">
+      <span><time class="t" datetime="2026-10-15T18:50:50.000Z">2026-10-15 18:50Z</time> · 3440×1440</span></a></div>
+      <h3>Recent clipboard metrics</h3>
+      <table class="compact"><thead><tr><th>Sampled</th><th class="num">Chars</th><th>Kind</th><th>SHA-256 (truncated)</th></tr></thead>
+        <tbody><tr>
+      <td><time class="t" datetime="2026-10-15T18:48:50.000Z">2026-10-15 18:48Z</time><span class="rel" data-at="2026-10-15T18:48:50.000Z">5m ago</span></td>
+      <td class="num">42</td><td>other</td>
+      <td class="mono">2d711642b726b044</td></tr></tbody></table>
+      <h3>Extension inventory</h3>
+      <table class="compact"><thead><tr><th>Browser</th><th>Extension</th><th>Version</th><th>Source</th><th class="num">State</th><th class="num">Perms</th></tr></thead>
+        <tbody><tr>
+      <td>chrome<span class="sub">Default</span></td>
+      <td>Corporate SSO<span class="sub mono">abcdefghijklmnopabcdefghijklmnopabcd</span></td>
+      <td>4.1.0</td><td>webstore</td>
+      <td><span class="pill ok">enabled</span></td>
+      <td class="num">2</td></tr></tbody></table>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="foot">
+  <p><strong>Disclosed monitoring.</strong> Agents run as a named Task Scheduler job
+    &ldquo;CTTIme Endpoint Visibility&rdquo;, write a local log, and can be uninstalled with
+    uninstall.ps1. Clipboard content is never collected: only a character count, a SHA-256 and a
+    kind label. Screenshots are never analysed by OCR or image recognition.
+    Notice version in force: <code>2026-10-15.1</code>.</p>
+</footer>
+<script src="app.js" defer></script>
+</body>
+</html>

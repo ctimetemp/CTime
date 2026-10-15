@@ -1,0 +1,36 @@
+CTTIme agent setup build
+built at   2026-10-15T23:22:14.368Z
+runtime    C:\Users\root\AppData\Local\Author Software\nvm\installs\v26.8.1\node.exe
+executable CTTImeSetup.exe (143860040 bytes)
+sha256     435984ae7fdbde5d4e45c337f1afd3edf1bb7cc8ca24d7fae48981eff0862710
+
+Files this executable writes into the state directory, with the sha256 of each as packaged.
+Rebuild from a copy of this repository and compare: node scripts/build-agent-exe.js
+
+      6808  b44bb4e77828681eb4e211a748ab19726dd7ca7c877e091dfb3b3d7951ef9022  setup/agent/cli.js
+     25008  9bd402b27addc8180096a40409d4335b0e9687a6319ae19ddd8ca63f0a57c776  setup/agent/index.js
+      5130  cd4bb8149a0a012bdab879d311980821e429467c9c25a1b1fe169101b9841d65  setup/agent/lib/clipboard.js
+      3362  784e55341515e43dbadfcc89481b5036adf7ee2d86d7c7cea19d8b28ae1ec74e  setup/agent/lib/connection.js
+      2818  84a7f858538c71fca789d54c6280eaa087b56872c765b3f2531e776425397300  setup/agent/lib/console.js
+       883  e1befb1ca307b404ae1c0b8ff0d7d009983d802e3673c0efe1384e696d80d14d  setup/agent/lib/errors.js
+      6891  846cbd4e3f5c4d6e37f6f3fc286125ff1afb2da86d5027a17296c423af7df823  setup/agent/lib/extensions.js
+      7030  8c2eb1374ec0f7531169e579cbc47a0fca9550cbd914a53a8883cfa477a9433f  setup/agent/lib/flush.js
+       910  eefebccd5d782e02c30e28d5e8407897324b9b7abc4e3513f46c44250e8e091b  setup/agent/lib/identity.js
+      2440  320068b38a45571b021378de0e22e01ef102524ee380f25958bf059df9c49d56  setup/agent/lib/machine-id.js
+      9691  4101334bb7e9c22d168ee95e1030077dd16ed6e2e8cab1f148d17772217fd796  setup/agent/lib/notify.js
+      2352  02d6178e957d3ec7b9d2902e05bac848246027afc859918ef56f5c917f9d8185  setup/agent/lib/phash.js
+      4796  004925f6dfe9dd3bdeeb5266ee2ceb2d1d365bba4174dc8e260195c5b94e5a86  setup/agent/lib/png.js
+      3670  6ca775f5373828d8177db03b3b9fe5991348eba7558263b468cf3dfba520bdd0  setup/agent/lib/policy.js
+      7452  a6d1af02c3c68e0d17cb2cfa5a297b58d71f4a02f6865f0074547dba7b350b7d  setup/agent/lib/producers.js
+     10659  42d4bd9fcfb4288bd36939e5c22671251c21db842fab6c5ea6f42f6d80431698  setup/agent/lib/screenshot.js
+      9301  1fea1bb3263143aa15bf69973540ca1c318dee121e1d4f958ded24a79c6ee790  setup/agent/lib/spool.js
+      2165  54907c97671a86ff301412d03b96e05dce65727dab7677db3447b35bfd1a9cea  setup/agent/lib/state.js
+      2590  847b9268a4e0e2aa5a9ca0f9ed2901e415f23d128ece330382d09f460364ab9b  setup/agent/lib/token.js
+      8631  beee7f0e80c4360febd7de154660222bdeb3302c0f3b779af506e6897b87a971  setup/agent/lib/transport.js
+        38  c85e2967766e8b096b93896e319f3efafd9de2cb573d8580b4bab5d5884306b6  setup/agent/version.js
+       445  f1a2651df91738c7e4a5b3e9af53345ec71248f47ca352f95429e1fb1a664434  setup/package.json
+      8175  d8089416c283081ca773e3311684b3706f6e5dbefadc558e8c41ac701818751a  setup/scripts/agent-setup-launcher.cjs
+      7616  beb7a299560bc10e91336cb257d827e0c2bf51071bdc6038bd1cb2dc9b5b9e87  setup/scripts/build-agent-exe.js
+     16495  653564ce60b4607220d8f6a9d99f36907379a13d64ede45eee9002ef32a117cb  setup/scripts/install.ps1
+      4727  ebeb13de1c49adbb72598f76d280965a47ae4efa52a0c62cbaa9ad1e7da492b5  setup/scripts/uninstall.ps1
+ 103747400  5cba0ea928508c65ddadefc0681d2fb6d95f1f3beea4428f04397631140ee8e5  runtime/node.exe

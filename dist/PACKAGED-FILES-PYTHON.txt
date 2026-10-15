@@ -1,0 +1,37 @@
+CTTIme Python agent build
+built at   2026-10-15T20:27:34.502349+00:00
+python     3.14.7 (C:\Users\root\AppData\Local\Python\pythoncore-3.14-64\python.exe)
+PyInstaller 6.22.3
+executable CTTImeAgent.exe (9338879 bytes)
+sha256     839263e587d2f25387e519181b39676b699cf4a5f46c43e3a922604c0c802a20
+
+Source bundled inside the executable under _source, readable as written.
+
+       323  055efd638fcd8f86e9bc7a81fabf94aed1613fe7f366844249dee517afd7af69  __main__.py
+       241  c91213979478d8c83857fcceb8f4c1ac1b907cb6d044cd701b35d2bd25f59f2b  CTTIme_agent/__init__.py
+       679  e3aaa0f318575ef60873cf1aada13efde91c6de9e06cb85089c87418c2c45473  CTTIme_agent/__main__.py
+     25238  0602289c10e01e90a60cd8bf6d86718a863984f2f3ce40b438288eb171fd2c2e  CTTIme_agent/agent.py
+      6548  40831d74883eb15d4cc92d6c843a4684efa1d76415d202e235667dde5d78cc8a  CTTIme_agent/cli.py
+       440  815338b04154e06438cb7fd058dfff15625998b53468c8c05d7929c7ebfd6df2  CTTIme_agent/clock.py
+      4816  e3b9588e6782e85033d2779464a96be3ec6d73384d1edc394e60d8b581c41cd7  CTTIme_agent/connection.py
+      4506  c8c27b6486308a504d6c55081e79ea65d70541266bac8d06dee32e130458e27b  CTTIme_agent/disclosure.py
+       889  31dd3877cf57c34647a226373bd7fe736ef43e015766f3ddda4f2ea9ea935811  CTTIme_agent/errors.py
+      7183  82fda118d7c235434a744cca126d2b7a21969c44afee404964dcb4aeb2b5f20c  CTTIme_agent/extensions.py
+      8845  b90942ff63f5b3c2e60741118e9ef195169b4c030674493c4f8a33ca53f2ccde  CTTIme_agent/flush.py
+       877  8d37d50fbcecdf7bfc5e32a3b2f53e6f3f329108f2aaf40c90d5d85afb508f2a  CTTIme_agent/identity.py
+      3234  99662b2efaa3be7f4d3dc20c887653c7fcea09807b5a823593c25be9d8d5dc3b  CTTIme_agent/machine_id.py
+     14399  4ae5fbab6a2469a321ab0d3d134f01850ca1144809216043ada74ba352f49a70  CTTIme_agent/notify.py
+      1523  8de6cbd3a39d6e60260942141a023fc214ec9bafd80ec082091c365f3082dba6  CTTIme_agent/phash.py
+      3799  252c0ec752598a1e3a338b07dd94ffcd77b7de9fb1caf0aaa8d3fc0be8280f27  CTTIme_agent/policy.py
+      2526  32bede258b2c90eb581c72ad6665e7a6153c786093ac6f49094dedbd2734b71a  CTTIme_agent/probes.py
+      5917  83c30da72c27b8cc107f04bae03a404de870d168a5d916e2bb9bfc3db60dd32b  CTTIme_agent/probes/capture.ps1
+      1675  db19e311231f3c69ee1d18ad1bf359ae64638f4db47a68f40ddf8441982e1151  CTTIme_agent/probes/clipboard_probe.ps1
+       299  a73cd942028867dc2319d73f36ff6cf5b7c74a1bb67ff91ce86c86b3384ad6d3  CTTIme_agent/probes/dpapi_protect.ps1
+       297  9d7d1ca44f5db47a1960df97680973e944cec06af9e4d3eb4b6990a7d7310a13  CTTIme_agent/probes/dpapi_unprotect.ps1
+      1170  d509d983f83228827430b3efcbb36a2d77368bc09a479d87b21bce88c5d3b996  CTTIme_agent/probes/notify.ps1
+      8085  e3c981228bf0b4c2b611ce63dcf554e21fab736da3156756c8a343515443a2f7  CTTIme_agent/producers.py
+      4568  5f7280c597f1c973f4dc493950a02df44e846b44a42945e975d08e564cd29820  CTTIme_agent/samplers.py
+     10694  7f80e8e5771ebe455e850d013b6f39d8cf31fcfaf58c677ece1e84e5e04d9772  CTTIme_agent/spool.py
+      2044  357d6987affe0308d838703df66c4825db3465e83ba6eddbc9d3c4c797558ca0  CTTIme_agent/state.py
+      2009  51cdc5866dcd3c7c52b5684c431c14944185bf11765db92efef7eb0d5729697e  CTTIme_agent/token.py
+     11838  eb74aa88689c105fde6f86813fd42bdfba188cbe719697047a2abd37c2b8390b  CTTIme_agent/transport.py

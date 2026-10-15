@@ -1,0 +1,62 @@
+{
+  "product": "CTTIme Endpoint Visibility",
+  "purpose": "Disclosed endpoint monitoring on a company-managed Windows device.",
+  "agent_version": "1.0.0",
+  "state_directory": "D:\\CTTIme\\.tmp\\nsgate",
+  "collector": {
+    "host": "127.0.0.1",
+    "port": 8466,
+    "transport": "https, pinned by certificate SHA-256 fingerprint"
+  },
+  "collects": {
+    "screenshots": {
+      "enabled": true,
+      "every_minutes": 5,
+      "skipped_when_locked": true,
+      "skipped_when_idle_seconds_over": 600,
+      "identical_frames_uploaded": false,
+      "server_side_retention_days": 30
+    },
+    "browser_extensions": {
+      "enabled": true,
+      "browsers": [
+        "chrome",
+        "brave",
+        "edge",
+        "firefox"
+      ],
+      "how_often": "at most once per 24h, and only when a browser preference file changed"
+    },
+    "clipboard": {
+      "enabled": true,
+      "every_seconds": 60,
+      "sent": "character count, SHA-256 of the content, kind label (text|file-list|image|empty)",
+      "never_sent": "the clipboard content. It is hashed inside a child process and discarded."
+    },
+    "screen_state": {
+      "enabled": true,
+      "values": [
+        "locked",
+        "idle",
+        "active"
+      ]
+    }
+  },
+  "batching": {
+    "model": "events append to a local spool and upload in batches; nothing is sent per event",
+    "heartbeat_interval_seconds": 300,
+    "batch_max_items": 200,
+    "batch_max_bytes": 262144,
+    "batch_max_age_seconds": 120,
+    "spool_max_bytes": 134217728,
+    "spool_location": "D:\\CTTIme\\.tmp\\nsgate\\spool",
+    "when_full": "oldest whole segments are deleted first and the count is reported to the server, so gaps are visible rather than silent"
+  },
+  "policy_source": "Every interval and threshold is set by the collector server. These are the values in effect now.",
+  "device_identity": {
+    "fingerprint_source": "registry",
+    "has_smb_uuid": true
+  },
+  "local_log": "D:\\CTTIme\\.tmp\\nsgate\\agent.log",
+  "uninstall": "scripts/uninstall.ps1 removes the scheduled task and deletes the state directory."
+}

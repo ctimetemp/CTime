@@ -1,0 +1,14 @@
+
+  CTTIme collector
+  listening      https://127.0.0.1:8443
+  also listening https://127.0.0.1:8444
+  connect via    https://127.0.0.1:8443  or  https://127.0.0.1:8444   (bound to one interface only)
+                 loopback: only this machine can reach it. To serve the LAN,
+                 start with CTTIme_BIND=<this machine's LAN address>.
+  database       D:\CTTIme\server\data\collector.db
+  screenshots    D:\CTTIme\server\data\screenshots
+  cert SHA-256   01c647dd394181e596988d7ea4c18f8369aa0b08e4ba598de7dc68564a928767
+
+  Pin that fingerprint in the agent (--pin <hex>). There is no plaintext fallback
+  and no negotiated downgrade if it does not match.
+

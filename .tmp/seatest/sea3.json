@@ -1,0 +1,1 @@
+{ "main": "main.mjs", "output": "t2.exe", "assets": { "lib.js": "lib.js" } }

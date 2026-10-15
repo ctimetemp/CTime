@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="csrf" content="7b6574f3d237c4496e1d5d83f541aa5c">
+<title>Extensions · CTTIme</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="mark">Z</span><span>CTTIme</span><span class="sub">endpoint visibility</span></div>
+  <div class="session"><span class="who">itadmin</span><button class="linklike" data-action="logout" type="button">Sign out</button></div>
+</header>
+<nav class="tabs"><a class="navitem" href="index.html">Overview<span class="navcount">1</span></a><a class="navitem" href="screenshots.html">Screenshots</a><a class="navitem active" href="extensions.html">Extensions</a><a class="navitem" href="clipboard.html">Clipboard</a><a class="navitem" href="health.html">Telemetry health</a><a class="navitem" href="audit.html">Audit log</a><a class="navitem" href="policy.html">Policy</a></nav>
+
+<main>
+<section class="region" data-region="extensions" data-livepoll="/fragments/extensions">
+  <div class="regionhead"><h2>Browser extension inventory</h2>
+    <p class="hint">An agent re-reads its profiles at most once per
+      <code>ext_inventory_max_age_hours</code>, so this table is a snapshot of a profile, not a
+      live feed. Nothing here changes what a browser does.</p>
+    <form class="filters" method="get" action="/extensions"><label class="filter"><span>Device</span><select name="device"><option value="">All devices</option><option value="87bf5c99-1aa6-4646-9be7-097720e41bba">LT-MKT-0455</option><option value="3125ffb1-bfbf-4614-9a6f-6d93d09d14fb">WS-ENG-1146</option><option value="566d3452-e000-43c1-80bd-c5d1500836c9">WS-FIN-0213</option><option value="26d0ddf3-055f-4633-9a39-e6fca13a8187">WS-HR-0087</option></select></label><label class="filter"><span>Browser</span><select name="browser"><option value="">All browsers</option><option value="chrome">chrome</option><option value="edge">edge</option><option value="firefox">firefox</option></select></label>
+    <button type="submit" class="btn">Apply</button></form></div>
+  <table>
+    <thead><tr><th>Collected</th><th>Device</th><th>Browser</th><th>Extension</th><th>Version</th>
+      <th>Source</th><th>State</th><th>Permissions</th></tr></thead>
+    <tbody><tr>
+    <td><time class="t" datetime="2026-10-15T11:29:17.087Z">2026-10-15 11:29Z</time></td>
+    <td><a class="host" href="device-WS-HR-0087.html">WS-HR-0087</a></td>
+    <td>edge<span class="sub">Default</span></td>
+    <td>Docs Offline<span class="sub mono">ghbmnnjooekpmoecnnnilnnbdlolhkhi</span></td>
+    <td>1.102.1</td>
+    <td>webstore</td>
+    <td><span class="pill ok">enabled</span></td>
+    <td><details><summary>1</summary><ul class="perms"><li class="mono">storage</li></ul></details></td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T11:29:17.087Z">2026-10-15 11:29Z</time></td>
+    <td><a class="host" href="device-WS-HR-0087.html">WS-HR-0087</a></td>
+    <td>edge<span class="sub">Default</span></td>
+    <td>Corporate SSO Bridge<span class="sub mono">kfkieiegogfmeefgbeejbgdajgkdgkno</span></td>
+    <td>3.2.1</td>
+    <td>sideload</td>
+    <td><span class="pill ok">enabled</span></td>
+    <td><details><summary>3</summary><ul class="perms"><li class="mono">&lt;all_urls&gt;</li><li class="mono">cookies</li><li class="mono">nativeMessaging</li></ul></details></td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T11:29:17.087Z">2026-10-15 11:29Z</time></td>
+    <td><a class="host" href="device-WS-HR-0087.html">WS-HR-0087</a></td>
+    <td>edge<span class="sub">Default</span></td>
+    <td>Chrome Web Store Payments<span class="sub mono">nmmhkkegccagdldgiimedpiccmgmieda</span></td>
+    <td>1.0.0.4</td>
+    <td>builtin</td>
+    <td><span class="pill">disabled</span></td>
+    <td><span class="muted">none</span></td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T12:29:16.989Z">2026-10-15 12:29Z</time></td>
+    <td><a class="host" href="device-LT-MKT-0455.html">LT-MKT-0455</a></td>
+    <td>chrome<span class="sub">Default</span></td>
+    <td>Corporate SSO Bridge<span class="sub mono">kfkieiegogfmeefgbeejbgdajgkdgkno</span></td>
+    <td>3.2.1</td>
+    <td>sideload</td>
+    <td><span class="pill ok">enabled</span></td>
+    <td><details><summary>3</summary><ul class="perms"><li class="mono">&lt;all_urls&gt;</li><li class="mono">cookies</li><li class="mono">nativeMessaging</li></ul></details></td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T12:29:16.989Z">2026-10-15 12:29Z</time></td>
+    <td><a class="host" href="device-LT-MKT-0455.html">LT-MKT-0455</a></td>
+    <td>chrome<span class="sub">Default</span></td>
+    <td>Chrome Web Store Payments<span class="sub mono">nmmhkkegccagdldgiimedpiccmgmieda</span></td>
+    <td>1.0.0.4</td>
+    <td>builtin</td>
+    <td><span class="pill">disabled</span></td>
+    <td><span class="muted">none</span></td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T12:29:16.989Z">2026-10-15 12:29Z</time></td>
+    <td><a class="host" href="device-LT-MKT-0455.html">LT-MKT-0455</a></td>
+    <td>chrome<span class="sub">Default</span></td>
+    <td>Bitwarden<span class="sub mono">mihcahmgecmbnbcchbopgniflfhgnkff</span></td>
+    <td>2025.9.2</td>
+    <td>webstore</td>
+    <td><span class="pill ok">enabled</span></td>
+    <td><details><summary>2</summary><ul class="perms"><li class="mono">clipboardRead</li><li class="mono">storage</li></ul></details></td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T08:59:10.905Z">2026-10-15 08:59Z</time></td>
+    <td><a class="host" href="device-WS-ENG-1146.html">WS-ENG-1146</a></td>
+    <td>firefox<span class="sub">a1b2c3d4.default</span></td>
+    <td>Form Autofill<span class="sub mono">formautofill@mozilla.org</span></td>
+    <td>1.0.1</td>
+    <td>builtin</td>
+    <td><span class="pill">disabled</span></td>
+    <td><span class="muted">none</span></td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T08:59:10.905Z">2026-10-15 08:59Z</time></td>
+    <td><a class="host" href="device-WS-ENG-1146.html">WS-ENG-1146</a></td>
+    <td>firefox<span class="sub">a1b2c3d4.default</span></td>
+    <td>Dark Reader<span class="sub mono">{b9db16a4-6f76-4b7a-bc2f-677fa01fecb4}</span></td>
+    <td>5.6.9</td>
+    <td>webstore</td>
+    <td><span class="pill ok">enabled</span></td>
+    <td><details><summary>1</summary><ul class="perms"><li class="mono">&lt;all_urls&gt;</li></ul></details></td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T08:41:10.905Z">2026-10-15 08:41Z</time></td>
+    <td><a class="host" href="device-WS-ENG-1146.html">WS-ENG-1146</a></td>
+    <td>edge<span class="sub">Profile 1</span></td>
+    <td>Chrome Web Store Payments<span class="sub mono">nmmhkkegccagdldgiimedpiccmgmieda</span></td>
+    <td>1.0.0.4</td>
+    <td>webstore</td>
+    <td><span class="pill">disabled</span></td>
+    <td><span class="muted">none</span></td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T08:41:10.905Z">2026-10-15 08:41Z</time></td>
+    <td><a class="host" href="device-WS-ENG-1146.html">WS-ENG-1146</a></td>
+    <td>edge<span class="sub">Profile 1</span></td>
+    <td>Bitwarden<span class="sub mono">mihcahmgecmbnbcchbopgniflfhgnkff</span></td>
+    <td>2025.9.2</td>
+    <td>webstore</td>
+    <td><span class="pill ok">enabled</span></td>
+    <td><details><summary>2</summary><ul class="perms"><li class="mono">clipboardRead</li><li class="mono">storage</li></ul></details></td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T08:41:10.905Z">2026-10-15 08:41Z</time></td>
+    <td><a class="host" href="device-WS-ENG-1146.html">WS-ENG-1146</a></td>
+    <td>edge<span class="sub">Profile 1</span></td>
+    <td>uBlock Origin<span class="sub mono">gpponghdmnpckekpmpnbadkhljfadcjh</span></td>
+    <td>1.56.0</td>
+    <td>webstore</td>
+    <td><span class="pill ok">enabled</span></td>
+    <td><details><summary>4</summary><ul class="perms"><li class="mono">&lt;all_urls&gt;</li><li class="mono">webRequest</li><li class="mono">storage</li><li class="mono">powerful</li></ul></details></td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T08:39:10.905Z">2026-10-15 08:39Z</time></td>
+    <td><a class="host" href="device-WS-ENG-1146.html">WS-ENG-1146</a></td>
+    <td>chrome<span class="sub">Default</span></td>
+    <td>Docs Offline<span class="sub mono">ghbmnnjooekpmoecnnnilnnbdlolhkhi</span></td>
+    <td>1.102.1</td>
+    <td>webstore</td>
+    <td><span class="pill ok">enabled</span></td>
+    <td><details><summary>1</summary><ul class="perms"><li class="mono">storage</li></ul></details></td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T08:39:10.905Z">2026-10-15 08:39Z</time></td>
+    <td><a class="host" href="device-WS-ENG-1146.html">WS-ENG-1146</a></td>
+    <td>chrome<span class="sub">Default</span></td>
+    <td>Corporate SSO Bridge<span class="sub mono">kfkieiegogfmeefgbeejbgdajgkdgkno</span></td>
+    <td>3.2.1</td>
+    <td>sideload</td>
+    <td><span class="pill ok">enabled</span></td>
+    <td><details><summary>3</summary><ul class="perms"><li class="mono">&lt;all_urls&gt;</li><li class="mono">cookies</li><li class="mono">nativeMessaging</li></ul></details></td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T08:39:10.905Z">2026-10-15 08:39Z</time></td>
+    <td><a class="host" href="device-WS-ENG-1146.html">WS-ENG-1146</a></td>
+    <td>chrome<span class="sub">Default</span></td>
+    <td>Chrome Web Store Payments<span class="sub mono">nmmhkkegccagdldgiimedpiccmgmieda</span></td>
+    <td>1.0.0.4</td>
+    <td>builtin</td>
+    <td><span class="pill">disabled</span></td>
+    <td><span class="muted">none</span></td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T08:39:10.905Z">2026-10-15 08:39Z</time></td>
+    <td><a class="host" href="device-WS-ENG-1146.html">WS-ENG-1146</a></td>
+    <td>chrome<span class="sub">Default</span></td>
+    <td>Bitwarden<span class="sub mono">mihcahmgecmbnbcchbopgniflfhgnkff</span></td>
+    <td>2025.9.2</td>
+    <td>webstore</td>
+    <td><span class="pill ok">enabled</span></td>
+    <td><details><summary>2</summary><ul class="perms"><li class="mono">clipboardRead</li><li class="mono">storage</li></ul></details></td>
+  </tr><tr>
+    <td><time class="t" datetime="2026-10-15T08:39:10.905Z">2026-10-15 08:39Z</time></td>
+    <td><a class="host" href="device-WS-ENG-1146.html">WS-ENG-1146</a></td>
+    <td>chrome<span class="sub">Default</span></td>
+    <td>uBlock Origin<span class="sub mono">gpponghdmnpckekpmpnbadkhljfadcjh</span></td>
+    <td>1.56.0</td>
+    <td>webstore</td>
+    <td><span class="pill ok">enabled</span></td>
+    <td><details><summary>4</summary><ul class="perms"><li class="mono">&lt;all_urls&gt;</li><li class="mono">webRequest</li><li class="mono">storage</li><li class="mono">powerful</li></ul></details></td>
+  </tr></tbody>
+  </table>
+  
+</section>
+</main>
+<footer class="foot">
+  <p><strong>Disclosed monitoring.</strong> Agents run as a named Task Scheduler job
+    &ldquo;CTTIme Endpoint Visibility&rdquo;, write a local log, and can be uninstalled with
+    uninstall.ps1. Clipboard content is never collected: only a character count, a SHA-256 and a
+    kind label. Screenshots are never analysed by OCR or image recognition.
+    Notice version in force: <code>2026-10-15.1</code>.</p>
+</footer>
+<script src="app.js" defer></script>
+</body>
+</html>

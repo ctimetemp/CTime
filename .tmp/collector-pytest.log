@@ -1,0 +1,14 @@
+
+  CTTIme collector
+  listening      https://127.0.0.1:8454
+  connect via    https://127.0.0.1:8454   (bound to one interface only)
+  database       D:\CTTIme\.tmp\pytest-data\collector.db
+  screenshots    D:\CTTIme\.tmp\pytest-data\screenshots
+  cert SHA-256   af865375fc5bddf098fabdc04205394878a4ef21a40d0de9667d0a58580895ff
+
+  Pin that fingerprint in the agent (--pin <hex>). There is no plaintext fallback
+  and no negotiated downgrade if it does not match.
+
+  ! No admin accounts. Run: node scripts/make-account.js <name>
+    Logins are refused until one exists -- there is no default password.
+

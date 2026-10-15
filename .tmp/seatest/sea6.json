@@ -1,0 +1,1 @@
+{ "main": "dyn.cjs", "output": "t5.exe", "disableExperimentalSEAWarning": true }

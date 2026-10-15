@@ -1,0 +1,12 @@
+[collector] seeded admin account: lcadmin
+
+  CTTIme collector
+  listening      https://127.0.0.1:8477
+  connect via    https://127.0.0.1:8477   (bound to one interface only)
+  database       D:\CTTIme\.tmp\gatedata\collector.db
+  screenshots    D:\CTTIme\.tmp\gatedata\screenshots
+  cert SHA-256   d2393d0d63d10eeff2e49145f9fae6dbb42348464d12e860dc9e6a0ef0e6fc17
+
+  Pin that fingerprint in the agent (--pin <hex>). There is no plaintext fallback
+  and no negotiated downgrade if it does not match.
+

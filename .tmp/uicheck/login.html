@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="csrf" content="">
+<title>Sign in · CTTIme</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="mark">Z</span><span>CTTIme</span><span class="sub">endpoint visibility</span></div>
+  
+</header>
+<nav class="tabs"><a class="navitem" href="index.html">Overview</a><a class="navitem" href="screenshots.html">Screenshots</a><a class="navitem" href="extensions.html">Extensions</a><a class="navitem" href="clipboard.html">Clipboard</a><a class="navitem" href="health.html">Telemetry health</a><a class="navitem" href="audit.html">Audit log</a><a class="navitem" href="policy.html">Policy</a></nav>
+
+<main>
+<section class="loginpane">
+  <h1>Sign in</h1>
+  <p class="hint">This dashboard is the administrative view of a disclosed monitoring collector.
+    Access is logged. Every approval, revocation, export, policy write and screenshot view is
+    recorded in the audit log with your account name and address.</p>
+  
+  <form data-action="login" autocomplete="off">
+    <label>Account <input type="text" name="account" required></label>
+    <label>Password <input type="password" name="password" required></label>
+    <button type="submit" class="btn primary">Sign in</button>
+  </form>
+  <noscript><div class="banner">This page needs JavaScript for sign-in. The collector exposes the
+    same surface as a documented JSON API for scripted use.</div></noscript>
+</section>
+</main>
+<footer class="foot">
+  <p><strong>Disclosed monitoring.</strong> Agents run as a named Task Scheduler job
+    &ldquo;CTTIme Endpoint Visibility&rdquo;, write a local log, and can be uninstalled with
+    uninstall.ps1. Clipboard content is never collected: only a character count, a SHA-256 and a
+    kind label. Screenshots are never analysed by OCR or image recognition.
+    </p>
+</footer>
+<script src="app.js" defer></script>
+</body>
+</html>

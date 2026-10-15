@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="csrf" content="0cfc0de312333e233be1a2fb78518a23">
+<title>Policy · CTTIme</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="mark">Z</span><span>CTTIme</span><span class="sub">endpoint visibility</span></div>
+  <div class="session"><span class="who">itadmin</span><button class="linklike" data-action="logout" type="button">Sign out</button></div>
+</header>
+<nav class="tabs"><a class="navitem" href="/">Overview<span class="navcount">1</span></a><a class="navitem" href="/screenshots">Screenshots</a><a class="navitem" href="/extensions">Extensions</a><a class="navitem" href="/clipboard">Clipboard</a><a class="navitem" href="/health">Telemetry health</a><a class="navitem" href="/audit">Audit log</a><a class="navitem active" href="/policy">Policy</a><a class="navitem" href="/help">Help</a></nav>
+
+<main>
+<section class="region" data-region="policy">
+  <div class="regionhead"><h2>Collection policy</h2>
+    <p class="hint">Agents learn these values on their next heartbeat; nothing on the device needs
+      restarting. Only keys that actually changed are sent, so an edit costs one small delta per
+      device rather than a config download. Current etag <code>&quot;5815fa6b03d56db3&quot;</code>.</p></div>
+  <form class="policyform" data-action="policy">
+    <table><thead><tr><th>Key</th><th>Value</th><th class="num">Allowed</th><th>Last set</th></tr></thead>
+      <tbody><tr>
+      <td><code>screenshot_interval_minutes</code><span class="sub">How often an approved agent captures a frame.</span></td>
+      <td class="cellv"><input type="number" name="screenshot_interval_minutes" data-kind="int" value="5"
+          min="1" max="1440" step="1">
+          <span class="unit" data-unit-for="screenshot_interval_minutes">5 min</span></td>
+      <td class="num">1–1440<span class="sub">1 min – 1 d</span></td>
+      <td><time class="t" datetime="2026-10-15T18:52:44.000Z">2026-10-15 18:52Z</time><span class="sub">system</span></td>
+    </tr><tr>
+      <td><code>screenshot_retention_days</code><span class="sub">Server-side age at which the sweeper deletes stored images.</span></td>
+      <td class="cellv"><input type="number" name="screenshot_retention_days" data-kind="int" value="30"
+          min="1" max="365" step="1">
+          <span class="unit" data-unit-for="screenshot_retention_days">30 d</span></td>
+      <td class="num">1–365<span class="sub">1 d – 365 d</span></td>
+      <td><time class="t" datetime="2026-10-15T18:52:44.000Z">2026-10-15 18:52Z</time><span class="sub">system</span></td>
+    </tr><tr>
+      <td><code>screenshot_max_bytes</code><span class="sub">Bigger captures are dropped on the device before upload.</span></td>
+      <td class="cellv"><input type="number" name="screenshot_max_bytes" data-kind="int" value="8388608"
+          min="65536" max="33554432" step="1">
+          <span class="unit" data-unit-for="screenshot_max_bytes">8.0 MiB</span></td>
+      <td class="num">65536–33554432<span class="sub">64 KiB – 32.0 MiB</span></td>
+      <td><time class="t" datetime="2026-10-15T18:52:44.000Z">2026-10-15 18:52Z</time><span class="sub">system</span></td>
+    </tr><tr>
+      <td><code>clipboard_metrics_enabled</code><span class="sub">Off stops sampling entirely; nothing is queued while it is off.</span></td>
+      <td class="cellv"><select name="clipboard_metrics_enabled" data-kind="bool">
+          <option value="true" selected>true</option>
+          <option value="false">false</option></select></td>
+      <td class="num"><span class="muted">—</span></td>
+      <td><time class="t" datetime="2026-10-15T18:52:44.000Z">2026-10-15 18:52Z</time><span class="sub">system</span></td>
+    </tr><tr>
+      <td><code>extension_inventory_enabled</code><span class="sub">Off stops the browser profile read completely.</span></td>
+      <td class="cellv"><select name="extension_inventory_enabled" data-kind="bool">
+          <option value="true" selected>true</option>
+          <option value="false">false</option></select></td>
+      <td class="num"><span class="muted">—</span></td>
+      <td><time class="t" datetime="2026-10-15T18:52:44.000Z">2026-10-15 18:52Z</time><span class="sub">system</span></td>
+    </tr><tr>
+      <td><code>clipboard_sample_seconds</code><span class="sub">How often the clipboard is hashed in memory on the device.</span></td>
+      <td class="cellv"><input type="number" name="clipboard_sample_seconds" data-kind="int" value="60"
+          min="15" max="3600" step="1">
+          <span class="unit" data-unit-for="clipboard_sample_seconds">1 min</span></td>
+      <td class="num">15–3600<span class="sub">15 s – 1 h</span></td>
+      <td><time class="t" datetime="2026-10-15T18:52:44.000Z">2026-10-15 18:52Z</time><span class="sub">system</span></td>
+    </tr><tr>
+      <td><code>heartbeat_interval_seconds</code><span class="sub">Control-plane poll; policy deltas arrive here.</span></td>
+      <td class="cellv"><input type="number" name="heartbeat_interval_seconds" data-kind="int" value="300"
+          min="30" max="3600" step="1">
+          <span class="unit" data-unit-for="heartbeat_interval_seconds">5 min</span></td>
+      <td class="num">30–3600<span class="sub">30 s – 1 h</span></td>
+      <td><time class="t" datetime="2026-10-15T18:52:44.000Z">2026-10-15 18:52Z</time><span class="sub">system</span></td>
+    </tr><tr>
+      <td><code>batch_max_items</code><span class="sub">Flush when this many events are spooled.</span></td>
+      <td class="cellv"><input type="number" name="batch_max_items" data-kind="int" value="200"
+          min="1" max="1000" step="1">
+          </td>
+      <td class="num">1–1000</td>
+      <td><time class="t" datetime="2026-10-15T18:52:44.000Z">2026-10-15 18:52Z</time><span class="sub">system</span></td>
+    </tr><tr>
+      <td><code>batch_max_bytes</code><span class="sub">Flush when the spooled NDJSON reaches this size.</span></td>
+      <td class="cellv"><input type="number" name="batch_max_bytes" data-kind="int" value="262144"
+          min="8192" max="4194304" step="1">
+          <span class="unit" data-unit-for="batch_max_bytes">256 KiB</span></td>
+      <td class="num">8192–4194304<span class="sub">8.0 KiB – 4.0 MiB</span></td>
+      <td><time class="t" datetime="2026-10-15T18:52:44.000Z">2026-10-15 18:52Z</time><span class="sub">system</span></td>
+    </tr><tr>
+      <td><code>batch_max_age_seconds</code><span class="sub">Flush even a partial batch once the oldest event is this old.</span></td>
+      <td class="cellv"><input type="number" name="batch_max_age_seconds" data-kind="int" value="120"
+          min="10" max="3600" step="1">
+          <span class="unit" data-unit-for="batch_max_age_seconds">2 min</span></td>
+      <td class="num">10–3600<span class="sub">10 s – 1 h</span></td>
+      <td><time class="t" datetime="2026-10-15T18:52:44.000Z">2026-10-15 18:52Z</time><span class="sub">system</span></td>
+    </tr><tr>
+      <td><code>spool_max_bytes</code><span class="sub">Spool cap. Past it, oldest whole segments are dropped and reported.</span></td>
+      <td class="cellv"><input type="number" name="spool_max_bytes" data-kind="int" value="134217728"
+          min="8388608" max="1073741824" step="1">
+          <span class="unit" data-unit-for="spool_max_bytes">128.0 MiB</span></td>
+      <td class="num">8388608–1073741824<span class="sub">8.0 MiB – 1.00 GiB</span></td>
+      <td><time class="t" datetime="2026-10-15T18:52:44.000Z">2026-10-15 18:52Z</time><span class="sub">system</span></td>
+    </tr><tr>
+      <td><code>skip_when_locked</code><span class="sub">No capture while the workstation is locked.</span></td>
+      <td class="cellv"><select name="skip_when_locked" data-kind="bool">
+          <option value="true" selected>true</option>
+          <option value="false">false</option></select></td>
+      <td class="num"><span class="muted">—</span></td>
+      <td><time class="t" datetime="2026-10-15T18:52:44.000Z">2026-10-15 18:52Z</time><span class="sub">system</span></td>
+    </tr><tr>
+      <td><code>idle_skip_seconds</code><span class="sub">No capture while input has been idle this long.</span></td>
+      <td class="cellv"><input type="number" name="idle_skip_seconds" data-kind="int" value="600"
+          min="0" max="86400" step="1">
+          <span class="unit" data-unit-for="idle_skip_seconds">10 min</span></td>
+      <td class="num">0–86400<span class="sub">0 s – 1 d</span></td>
+      <td><time class="t" datetime="2026-10-15T18:52:44.000Z">2026-10-15 18:52Z</time><span class="sub">system</span></td>
+    </tr><tr>
+      <td><code>dedupe_unchanged_frames</code><span class="sub">Skip a frame whose perceptual hash matches the previous one.</span></td>
+      <td class="cellv"><select name="dedupe_unchanged_frames" data-kind="bool">
+          <option value="true" selected>true</option>
+          <option value="false">false</option></select></td>
+      <td class="num"><span class="muted">—</span></td>
+      <td><time class="t" datetime="2026-10-15T18:52:44.000Z">2026-10-15 18:52Z</time><span class="sub">system</span></td>
+    </tr><tr>
+      <td><code>ext_inventory_max_age_hours</code><span class="sub">Minimum age of a cached profile hash before re-reading.</span></td>
+      <td class="cellv"><input type="number" name="ext_inventory_max_age_hours" data-kind="int" value="24"
+          min="1" max="720" step="1">
+          <span class="unit" data-unit-for="ext_inventory_max_age_hours">1 d</span></td>
+      <td class="num">1–720<span class="sub">1 h – 30 d</span></td>
+      <td><time class="t" datetime="2026-10-15T18:52:44.000Z">2026-10-15 18:52Z</time><span class="sub">system</span></td>
+    </tr></tbody></table>
+    <p class="formnote" data-role="policy-note">Edit a value and save. Values outside the allowed range are refused before anything is written.</p>
+    <button type="submit" class="btn primary">Save changed keys</button>
+  </form>
+  <h3>Notice text</h3>
+  <p class="hint">Bumping the notice version replaces the text every agent must show and returns
+    every approved device to the approval queue. Consent is never inherited across a bump -- that
+    is the point of it.</p>
+  <form class="noticeform" data-action="notice">
+    <label>Version <input type="text" name="version" value="2026-10-15.1" placeholder="YYYY-MM-DD.n" required></label>
+    <label>Text shown to the device user <textarea name="text" rows="8" required>## What is collected on this device
+
+Your employer operates endpoint monitoring on this device using CTTIme Endpoint Visibility. This
+device is company-managed. This software is not hidden from you or from the IT staff, and it is
+registered as a named scheduled task you can see.
+
+The following is collected:
+
+**Screenshots of the entire screen**, taken on a fixed interval. The current interval is stated in
+`%PROGRAMDATA%\CTTIme\config.json` on this device. Screenshots are not taken while the workstation
+is locked, or while it has been idle longer than the configured idle threshold; those moments are
+recorded as a state label with no image. When a captured screen is identical to the previous one,
+the image is discarded on this device and never uploaded — repeated identical frames are not
+transmitted. Uploaded screenshots are deleted from the collector automatically after the retention
+period stated in `config.json`. The images are not analysed, searched, or read by any automated
+system.
+
+**A list of browser extensions installed** in Chrome, Brave, Edge and Firefox, including name,
+version, source, declared permissions, and whether each is enabled. This is read from the browser&#39;s
+own preference files. Browsing history, cookies, passwords, session tokens and page contents are
+not collected.
+
+**Clipboard metrics.** For each sample: the number of characters copied, a SHA-256 hash of the
+content, and a label for what kind of content it was (text, a file list, an image, or nothing).
+**The clipboard content itself is never collected.** Hashing happens in a short-lived helper process
+on this device, and only the three fields above leave it. There is no field in the agent, in the
+upload format, or in the collector&#39;s database that can hold clipboard text, and the collector
+rejects and logs any upload that attempts to send some.
+
+**Screen state labels** — locked, idle, or active — recorded when a screenshot was skipped.
+
+## How it is transmitted
+
+Events are written to a local spool on this device and uploaded in batches on a schedule. Nothing
+is uploaded per keystroke. The batching parameters, the spool size limit, and every interval named
+above are set by the collector and are listed in `%PROGRAMDATA%\CTTIme\config.json`. If the
+collector is unreachable, nothing about your device&#39;s behaviour changes and nothing is lost from
+the current spool until it reaches its size limit; if the spool does fill, the oldest events are
+discarded and that count is reported to the administrator, so a gap is visible rather than silent.
+
+Traffic is sent only to the collector address in `config.json`, over HTTPS, with the collector&#39;s
+certificate pinned by fingerprint.
+
+## Your access and recourse
+
+- You can open `%PROGRAMDATA%\CTTIme\config.json` to read exactly what this device is configured to
+  collect right now.
+- You can read the agent&#39;s own log at `%PROGRAMDATA%\CTTIme\agent.log`.
+- You can ask the IT administrator when your device was enrolled, who acknowledged on its behalf,
+  and what has been retained.
+- You can request a copy of the data held about this device, and request its correction or deletion,
+  through the process described in the Acceptable Use Policy. The administrator can also revoke this
+  device, which stops collection on the next request the agent makes.
+- Removing or disabling this software is an administrator action. Attempting to disable it yourself
+  is a violation of the Acceptable Use Policy.
+
+## What this notice cannot promise
+
+This notice records that the wording above was presented and that a name was typed beneath it. It
+does not, and cannot, establish that the person who typed the name was the device&#39;s user, or that
+they agreed freely. Those are the employer&#39;s obligations, and they are the parts of this arrangement
+that the software does not enforce. See `docs/LAWFUL-USE.md`.</textarea></label>
+    <p class="formnote" data-role="notice-note">Saving the same version with new wording does not
+      reset consent; change the version string to force everyone to acknowledge again.</p>
+    <button type="submit" class="btn danger">Set notice text</button>
+  </form>
+</section>
+</main>
+<footer class="foot">
+  <p><strong>Disclosed monitoring.</strong> Agents run as a named Task Scheduler job
+    &ldquo;CTTIme Endpoint Visibility&rdquo;, write a local log, and can be uninstalled with
+    uninstall.ps1. Clipboard content is never collected: only a character count, a SHA-256 and a
+    kind label. Screenshots are never analysed by OCR or image recognition.
+    Notice version in force: <code>2026-10-15.1</code>.</p>
+</footer>
+<script src="app.js" defer></script>
+</body>
+</html>

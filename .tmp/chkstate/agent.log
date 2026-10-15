@@ -1,0 +1,1 @@
+2026-10-15T18:43:49.206Z check failed: tls_pin_mismatch /api/v1/notice: cert [redacted-long-token] does not match the pin. Refusing to send. This means the collector was reinstalled, or something else is answering on that port.

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="csrf" content="7b6574f3d237c4496e1d5d83f541aa5c">
+<title>Screenshots · CTTIme</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="mark">Z</span><span>CTTIme</span><span class="sub">endpoint visibility</span></div>
+  <div class="session"><span class="who">itadmin</span><button class="linklike" data-action="logout" type="button">Sign out</button></div>
+</header>
+<nav class="tabs"><a class="navitem" href="index.html">Overview<span class="navcount">1</span></a><a class="navitem active" href="screenshots.html">Screenshots</a><a class="navitem" href="extensions.html">Extensions</a><a class="navitem" href="clipboard.html">Clipboard</a><a class="navitem" href="health.html">Telemetry health</a><a class="navitem" href="audit.html">Audit log</a><a class="navitem" href="policy.html">Policy</a></nav>
+
+<main>
+<section class="region" data-region="shots" data-livepoll="/fragments/shots">
+  <div class="regionhead"><h2>Screenshot wall</h2>
+    <p class="hint">Oldest images are deleted by the retention sweeper once past
+      <code>expires_at</code>; the wall shows that date so a missing file is not a mystery.
+      Pixels are never analysed on the server.</p>
+    <form class="filters" method="get" action="/screenshots"><label class="filter"><span>Device</span><select name="device"><option value="">All devices</option><option value="87bf5c99-1aa6-4646-9be7-097720e41bba">LT-MKT-0455</option><option value="3125ffb1-bfbf-4614-9a6f-6d93d09d14fb">WS-ENG-1146</option><option value="566d3452-e000-43c1-80bd-c5d1500836c9">WS-FIN-0213</option><option value="26d0ddf3-055f-4633-9a39-e6fca13a8187">WS-HR-0087</option></select></label>
+    <button type="submit" class="btn">Apply</button></form></div>
+  <div class="wall"><figure class="shot">
+    <a href="shots/5.png" target="_blank" rel="noopener">
+      <img loading="lazy" src="shots/5.png" alt="Screenshot 1455873c-33b6-4c8e-9c0f-7124c3c7826d"></a>
+    <figcaption><a class="host" href="device-WS-HR-0087.html">WS-HR-0087</a>
+      <time class="t" datetime="2026-10-15T11:59:17.090Z">2026-10-15 11:59Z</time>
+      <span class="sub">3440×1440 · 381 KiB · phash 93010181</span>
+      <span class="sub">expires <time class="t" datetime="2026-11-14T13:59:17.195Z">2026-11-14 13:59Z</time></span></figcaption>
+  </figure><figure class="shot">
+    <a href="shots/4.png" target="_blank" rel="noopener">
+      <img loading="lazy" src="shots/4.png" alt="Screenshot 543f3cd5-6c43-4ec4-9277-754cec42468e"></a>
+    <figcaption><a class="host" href="device-LT-MKT-0455.html">LT-MKT-0455</a>
+      <time class="t" datetime="2026-10-15T13:34:16.993Z">2026-10-15 13:34Z</time>
+      <span class="sub">3440×1440 · 381 KiB · phash 93010181</span>
+      <span class="sub">expires <time class="t" datetime="2026-11-14T13:59:17.091Z">2026-11-14 13:59Z</time></span></figcaption>
+  </figure><figure class="shot">
+    <a href="shots/3.png" target="_blank" rel="noopener">
+      <img loading="lazy" src="shots/3.png" alt="Screenshot 024c2be9-0a1a-4186-8bc5-235d2f42a4f7"></a>
+    <figcaption><a class="host" href="device-WS-ENG-1146.html">WS-ENG-1146</a>
+      <time class="t" datetime="2026-10-15T13:31:16.898Z">2026-10-15 13:31Z</time>
+      <span class="sub">3440×1440 · 381 KiB · phash 93010181</span>
+      <span class="sub">expires <time class="t" datetime="2026-11-14T13:59:16.993Z">2026-11-14 13:59Z</time></span></figcaption>
+  </figure><figure class="shot">
+    <a href="shots/2.png" target="_blank" rel="noopener">
+      <img loading="lazy" src="shots/2.png" alt="Screenshot 069fc65a-190c-48a9-b58e-125242fc1858"></a>
+    <figcaption><a class="host" href="device-WS-ENG-1146.html">WS-ENG-1146</a>
+      <time class="t" datetime="2026-10-15T13:42:16.794Z">2026-10-15 13:42Z</time>
+      <span class="sub">3440×1440 · 381 KiB · phash 93010181</span>
+      <span class="sub">expires <time class="t" datetime="2026-11-14T13:59:16.901Z">2026-11-14 13:59Z</time></span></figcaption>
+  </figure><figure class="shot">
+    <a href="shots/1.png" target="_blank" rel="noopener">
+      <img loading="lazy" src="shots/1.png" alt="Screenshot 3db3cd6c-2f53-4385-924b-5442965cc9c8"></a>
+    <figcaption><a class="host" href="device-WS-ENG-1146.html">WS-ENG-1146</a>
+      <time class="t" datetime="2026-10-15T13:53:16.664Z">2026-10-15 13:53Z</time>
+      <span class="sub">3440×1440 · 381 KiB · phash 93010181</span>
+      <span class="sub">expires <time class="t" datetime="2026-11-14T13:59:16.797Z">2026-11-14 13:59Z</time></span></figcaption>
+  </figure></div>
+  
+</section>
+</main>
+<footer class="foot">
+  <p><strong>Disclosed monitoring.</strong> Agents run as a named Task Scheduler job
+    &ldquo;CTTIme Endpoint Visibility&rdquo;, write a local log, and can be uninstalled with
+    uninstall.ps1. Clipboard content is never collected: only a character count, a SHA-256 and a
+    kind label. Screenshots are never analysed by OCR or image recognition.
+    Notice version in force: <code>2026-10-15.1</code>.</p>
+</footer>
+<script src="app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="csrf" content="0cfc0de312333e233be1a2fb78518a23">
+<title>Telemetry health · CTTIme</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="mark">Z</span><span>CTTIme</span><span class="sub">endpoint visibility</span></div>
+  <div class="session"><span class="who">itadmin</span><button class="linklike" data-action="logout" type="button">Sign out</button></div>
+</header>
+<nav class="tabs"><a class="navitem" href="/">Overview<span class="navcount">1</span></a><a class="navitem" href="/screenshots">Screenshots</a><a class="navitem" href="/extensions">Extensions</a><a class="navitem" href="/clipboard">Clipboard</a><a class="navitem active" href="/health">Telemetry health</a><a class="navitem" href="/audit">Audit log</a><a class="navitem" href="/policy">Policy</a><a class="navitem" href="/help">Help</a></nav>
+
+<main>
+<section class="region" data-region="health" data-poll="/fragments/health">
+  <div class="regionhead"><h2>Telemetry health</h2>
+    <p class="hint">Per device: how much it sent in the last hour, whether its spool is growing,
+      how many events it dropped after the spool cap was hit, and whether it is still running an
+      older policy than <code>&quot;5815fa6b03d56db3&quot;</code>. A nonzero drop count means the collector
+      was unreachable long enough for the spool to evict.</p></div>
+  <table><thead><tr><th>Device</th><th>State</th><th>Last seen</th><th class="num">Bytes / h</th>
+    <th class="num">Spool</th><th class="num">Dropped</th><th class="num">Flush ms</th>
+    <th class="num">Shots</th><th class="num">States</th><th>Policy</th><th>Gaps</th></tr></thead>
+    <tbody><tr>
+    <td><a class="host" href="/devices/048937f1-8c78-4680-ba66-f0ef9c46ed5e">DEV-DK-007</a></td>
+    <td><span class="badge b-approved">Approved</span></td>
+    <td><time class="t" datetime="2026-10-15T17:51:50.000Z">2026-10-15 17:51Z</time><span class="rel" data-at="2026-10-15T17:51:50.000Z">1h ago</span></td>
+    <td class="num muted">0 B</td>
+    <td class="num">3.0 MiB</td>
+    <td class="num warn">12</td>
+    <td class="num">—</td>
+    <td class="num">0</td>
+    <td class="num">0</td>
+    <td><span class="pill stale">behind</span></td>
+    <td><span class="pill warn">gaps</span></td>
+  </tr><tr>
+    <td><a class="host" href="/devices/45c1acc0-2c64-4467-9e5f-c935f4a1c536">FIN-WK-002</a></td>
+    <td><span class="badge b-approved">Approved</span></td>
+    <td><time class="t" datetime="2026-10-15T17:38:50.000Z">2026-10-15 17:38Z</time><span class="rel" data-at="2026-10-15T17:38:50.000Z">1h ago</span></td>
+    <td class="num muted">0 B</td>
+    <td class="num">3.0 MiB</td>
+    <td class="num warn">12</td>
+    <td class="num">—</td>
+    <td class="num">0</td>
+    <td class="num">0</td>
+    <td><span class="pill stale">behind</span></td>
+    <td><span class="pill warn">gaps</span></td>
+  </tr><tr>
+    <td><a class="host" href="/devices/40e3a776-2416-4b39-8a1d-4f201dfd779b">FIN-WS-014</a></td>
+    <td><span class="badge b-pending_approval">Pending approval</span></td>
+    <td><time class="t" datetime="2026-10-15T17:49:50.000Z">2026-10-15 17:49Z</time><span class="rel" data-at="2026-10-15T17:49:50.000Z">1h ago</span></td>
+    <td class="num muted">0 B</td>
+    <td class="num">3.0 MiB</td>
+    <td class="num warn">12</td>
+    <td class="num">—</td>
+    <td class="num">0</td>
+    <td class="num">0</td>
+    <td><span class="pill stale">behind</span></td>
+    <td><span class="pill warn">gaps</span></td>
+  </tr><tr>
+    <td><a class="host" href="/devices/a33fe0ca-c1b4-428c-888f-0b5879212239">HR-LT-088</a></td>
+    <td><span class="badge b-revoked">Revoked</span></td>
+    <td><time class="t" datetime="2026-10-15T07:42:50.000Z">2026-10-15 07:42Z</time><span class="rel" data-at="2026-10-15T07:42:50.000Z">11h ago</span></td>
+    <td class="num muted">0 B</td>
+    <td class="num">3.0 MiB</td>
+    <td class="num warn">12</td>
+    <td class="num">—</td>
+    <td class="num">1</td>
+    <td class="num">1</td>
+    <td><span class="pill stale">behind</span></td>
+    <td><span class="pill warn">gaps</span></td>
+  </tr><tr>
+    <td><a class="host" href="/devices/92ea6d75-f3f8-487c-adfc-ac76476f13df">OPS-LT-113</a></td>
+    <td><span class="badge b-approved">Approved</span></td>
+    <td><time class="t" datetime="2026-10-15T17:30:50.000Z">2026-10-15 17:30Z</time><span class="rel" data-at="2026-10-15T17:30:50.000Z">1h ago</span></td>
+    <td class="num muted">0 B</td>
+    <td class="num">3.0 MiB</td>
+    <td class="num warn">12</td>
+    <td class="num">—</td>
+    <td class="num">0</td>
+    <td class="num">0</td>
+    <td><span class="pill stale">behind</span></td>
+    <td><span class="pill warn">gaps</span></td>
+  </tr><tr>
+    <td><a class="host" href="/devices/f87e98ed-0c27-4800-91e3-066250386a0c">OPS-SRV-001</a></td>
+    <td><span class="badge b-approved">Approved</span></td>
+    <td><time class="t" datetime="2026-10-15T17:51:50.000Z">2026-10-15 17:51Z</time><span class="rel" data-at="2026-10-15T17:51:50.000Z">1h ago</span></td>
+    <td class="num muted">0 B</td>
+    <td class="num">3.0 MiB</td>
+    <td class="num warn">12</td>
+    <td class="num">—</td>
+    <td class="num">1</td>
+    <td class="num">1</td>
+    <td><span class="pill stale">behind</span></td>
+    <td><span class="pill warn">gaps</span></td>
+  </tr></tbody></table>
+</section>
+</main>
+<footer class="foot">
+  <p><strong>Disclosed monitoring.</strong> Agents run as a named Task Scheduler job
+    &ldquo;CTTIme Endpoint Visibility&rdquo;, write a local log, and can be uninstalled with
+    uninstall.ps1. Clipboard content is never collected: only a character count, a SHA-256 and a
+    kind label. Screenshots are never analysed by OCR or image recognition.
+    Notice version in force: <code>2026-10-15.1</code>.</p>
+</footer>
+<script src="app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,350 @@
+[
+  {
+    "name": "node server/index.js boots and prints the bind address + cert fingerprint",
+    "ok": true,
+    "ms": 0,
+    "detail": "https://127.0.0.1:7264, pin f77b289e3e4b…"
+  },
+  {
+    "name": "schema loads on a fresh database",
+    "ok": true,
+    "ms": 2,
+    "detail": "0 devices"
+  },
+  {
+    "name": "approving a device with acknowledged_at NULL is aborted by the DB trigger",
+    "ok": true,
+    "ms": 3,
+    "detail": "RAISE(ABORT) fired; \"\": blocked; \"   \": blocked; consented row approved"
+  },
+  {
+    "name": "empty acknowledged_by is refused at enrollment",
+    "ok": true,
+    "ms": 9,
+    "detail": "acknowledged_by must be the name typed by the device user"
+  },
+  {
+    "name": "a fabricated acknowledgment timestamp is refused",
+    "ok": true,
+    "ms": 2,
+    "detail": "clock_skew"
+  },
+  {
+    "name": "ingest from an unapproved device is refused and no token is issued",
+    "ok": true,
+    "ms": 5,
+    "detail": "no token while pending; 401 for an unknown bearer token"
+  },
+  {
+    "name": "approved device ingest returns 201",
+    "ok": true,
+    "ms": 6,
+    "detail": "event 6677a172-08df-43ea-ac26-060e13640c5a"
+  },
+  {
+    "name": "a content key on /clipboard-metric is rejected and audit-logged",
+    "ok": true,
+    "ms": 2,
+    "detail": "422 + audit row keyed \"forbidden key: content\", value not stored"
+  },
+  {
+    "name": "a content key inside one batch line rejects the whole batch",
+    "ok": true,
+    "ms": 6,
+    "detail": "whole batch refused; db holds 1 row(s), all from the single route"
+  },
+  {
+    "name": "no schema column can hold clipboard text",
+    "ok": true,
+    "ms": 3,
+    "detail": "clipboard_metrics(char_count, content_kind, device_id, event_id, id, sampled_at, sha256) — only count, hash and kind"
+  },
+  {
+    "name": "streamed PNG upload stores dimensions and rejects a wrong sha",
+    "ok": true,
+    "ms": 18,
+    "detail": "320x200 stored with dimensions + expiry; mismatched X-Sha256 and non-PNG refused"
+  },
+  {
+    "name": "duplicate event_id on screenshot is a no-op, not a second row",
+    "ok": true,
+    "ms": 6,
+    "detail": "id 2 reused"
+  },
+  {
+    "name": "unchanged config poll returns 304 with a zero-byte body",
+    "ok": true,
+    "ms": 2,
+    "detail": "etag \"1889ec1c10769a9e\", response 0 bytes"
+  },
+  {
+    "name": "unchanged heartbeat returns 204 with a zero-byte body",
+    "ok": true,
+    "ms": 2,
+    "detail": "response 0 bytes; request 87 bytes"
+  },
+  {
+    "name": "policy change reaches a running agent in one heartbeat cycle",
+    "ok": true,
+    "ms": 10,
+    "detail": "5 → 1 delivered as a 58-byte single-key delta, then 204 on ack"
+  },
+  {
+    "name": "out-of-bounds and non-agent policy values are refused",
+    "ok": true,
+    "ms": 4,
+    "detail": "interval 0, read-only collector_bind and an unknown key all rejected"
+  },
+  {
+    "name": "a mixed batch reports accepted/duplicates/malformed/unknown",
+    "ok": true,
+    "ms": 2,
+    "detail": "{\"accepted\":3,\"duplicates\":0,\"malformed\":1,\"unknown_types\":1}"
+  },
+  {
+    "name": "one inventory event carrying several extensions stores one row each",
+    "ok": true,
+    "ms": 5,
+    "detail": "3 rows from 1 event, idempotent on re-delivery"
+  },
+  {
+    "name": "re-sending the same batch reports duplicates and writes nothing new",
+    "ok": true,
+    "ms": 3,
+    "detail": "at-least-once delivery is lossless"
+  },
+  {
+    "name": "a batch with no gzip encoding is refused",
+    "ok": true,
+    "ms": 1,
+    "detail": "415 unsupported_media"
+  },
+  {
+    "name": "oversized batch body is rejected with 413, not buffered",
+    "ok": true,
+    "ms": 63,
+    "detail": "413 on a 6 MiB inflated body (compressed 49 KiB), collector still serving"
+  },
+  {
+    "name": "editing the wording at the same version keeps consent",
+    "ok": true,
+    "ms": 4,
+    "detail": "version 2026-10-15.2 kept, consent kept, heartbeat 200"
+  },
+  {
+    "name": "bumping the notice version returns approved devices to pending and blocks ingest",
+    "ok": true,
+    "ms": 2,
+    "detail": "403 state_not_approved; 1 device(s) back to pending"
+  },
+  {
+    "name": "approval on the strength of an old acknowledgment is refused",
+    "ok": true,
+    "ms": 1,
+    "detail": "old consent cannot approve onto new wording"
+  },
+  {
+    "name": "re-acknowledging on the new version restores the device",
+    "ok": true,
+    "ms": 8,
+    "detail": "approved + ingesting again on the new notice"
+  },
+  {
+    "name": "revoke requires a reason and kills the token",
+    "ok": true,
+    "ms": 3,
+    "detail": "400 without a reason; a revoked token no longer authenticates"
+  },
+  {
+    "name": "a revoked device cannot be un-revoked by a direct state update",
+    "ok": true,
+    "ms": 2,
+    "detail": "blocked: a revoked device cannot be re-approved; an admin must re-enable the row first"
+  },
+  {
+    "name": "reenable clears revoked but does not carry consent over",
+    "ok": true,
+    "ms": 1,
+    "detail": "state rejected; approval refused (reacknowledgment_required)"
+  },
+  {
+    "name": "every admin mutation requires a CSRF token",
+    "ok": true,
+    "ms": 3,
+    "detail": "POST without and with a forged X-CSRF-Token both refused"
+  },
+  {
+    "name": "media route is behind the session and the store is not statically reachable",
+    "ok": true,
+    "ms": 5,
+    "detail": "session-gated, 304 on revalidation, no static path into the store"
+  },
+  {
+    "name": "login failures are rate-limited and audited",
+    "ok": true,
+    "ms": 5,
+    "detail": "429 after 5 failures, 5 audit rows, no credentials in them"
+  },
+  {
+    "name": "telemetry health reports spool depth, drops, stale etag and flush",
+    "ok": true,
+    "ms": 2,
+    "detail": "{\"stale\":true,\"dropped\":0,\"flush_ms\":0.6}"
+  },
+  {
+    "name": "export writes an audit row and contains no clipboard text field",
+    "ok": true,
+    "ms": 1,
+    "detail": "4575 bytes exported + audited; no content/storage_key/token fields"
+  },
+  {
+    "name": "devices list never exposes the fingerprint or token hash",
+    "ok": true,
+    "ms": 0,
+    "detail": "2 rows, no secrets"
+  },
+  {
+    "name": "the collector reports the round trip in the order the agent produces it",
+    "ok": true,
+    "ms": 14,
+    "detail": "Confirmed working — five stamps, each moved by the step that owns it"
+  },
+  {
+    "name": "a re-approval restarts the round trip instead of inheriting the old verdict",
+    "ok": true,
+    "ms": 1217,
+    "detail": "verdict reset to token_pending on the new approval"
+  },
+  {
+    "name": "the devices list and the dashboard render the same verdict",
+    "ok": true,
+    "ms": 31,
+    "detail": "token_pending identical in list, detail and HTML"
+  },
+  {
+    "name": "an empty collector prints a first-run code and offers a claim form, not a login",
+    "ok": true,
+    "ms": 333,
+    "detail": "first-run code printed at boot, /login offers the claim form only"
+  },
+  {
+    "name": "the claim is refused without the code, and a wrong code is audited and rate-limited",
+    "ok": true,
+    "ms": 4,
+    "detail": "403 on a wrong code, 400 on a weak password, nothing sensitive logged"
+  },
+  {
+    "name": "the code claims the account, signs the operator in, and deletes itself",
+    "ok": true,
+    "ms": 212,
+    "detail": "claimed by code, code file gone, second claim refused, login works"
+  },
+  {
+    "name": "spool appends are O(1) and roll into segments",
+    "ok": true,
+    "ms": 179,
+    "detail": "15 segments of ≤16384b, all 400 events read back"
+  },
+  {
+    "name": "collector outage: spool stays under cap, oldest evicted, drops reported",
+    "ok": true,
+    "ms": 575,
+    "detail": "cap 24576 held at 20958b; 558 events dropped, oldest-first, reported once (42 kept)"
+  },
+  {
+    "name": "a screenshot blob over the cap is dropped locally, not sent",
+    "ok": true,
+    "ms": 14,
+    "detail": "blob gated by policy size before the socket is touched"
+  },
+  {
+    "name": "spool files on disk contain no clipboard text",
+    "ok": true,
+    "ms": 9,
+    "detail": "hash present, text absent"
+  },
+  {
+    "name": "the clipboard sampler returns only count/hash/kind",
+    "ok": true,
+    "ms": 454,
+    "detail": "{\"char_count\":312,\"sha256\":\"0b3c6cd060f30beea94def7ccfd976dabb01cd0a8f76f99b495a365ba50711a0\",\"content_kind\":\"text\"}"
+  },
+  {
+    "name": "backoff is full-jittered and capped at the two-minute reconnect ceiling",
+    "ok": true,
+    "ms": 1,
+    "detail": "attempt 0 max 1992ms, capped max 119933ms, 97 distinct values at attempt 6"
+  },
+  {
+    "name": "extension parsers handle synthetic profiles, missing dirs and absent keys",
+    "ok": true,
+    "ms": 19,
+    "detail": "3 profiles, 7 extensions, corrupt + keyless profiles skipped"
+  },
+  {
+    "name": "absent browsers produce no crash and no rows",
+    "ok": true,
+    "ms": 0,
+    "detail": "graceful for empty and nonexistent roots"
+  },
+  {
+    "name": "unchanged screen is deduped before upload; changed screen is not",
+    "ok": true,
+    "ms": 6,
+    "detail": "unchanged=1887710cc3308e71 changed=710cc3308e711cc3 hamming 29"
+  },
+  {
+    "name": "the unchanged-frame event carries no pixels",
+    "ok": true,
+    "ms": 2,
+    "detail": "only captured_at/sha256/phash survive validation"
+  },
+  {
+    "name": "real capture on this host yields a decodable PNG and a state label",
+    "ok": true,
+    "ms": 2198,
+    "detail": "3440x1440, 190 KiB, phash 88baa8aa82808081; screen changed between captures"
+  },
+  {
+    "name": "the idle probe survives a wrapped 32-bit tick counter",
+    "ok": true,
+    "ms": 550,
+    "detail": "4 tick pairs incl. both past Int32 range and 2 across the wrap; live=250ms"
+  },
+  {
+    "name": "every configured collector port answers, and an agent fails over to a live one",
+    "ok": true,
+    "ms": 686,
+    "detail": ": 18443 and :18444 served the same notice; refused port failed over to :18444"
+  },
+  {
+    "name": "the device user is told when the link drops, returns, or cannot be verified",
+    "ok": true,
+    "ms": 1,
+    "detail": "offline -> online -> unverified in order, flap-suppressed, retry capped and cancelled on stop"
+  },
+  {
+    "name": "the retry the connection watch schedules is fast enough to be called real time",
+    "ok": true,
+    "ms": 2005,
+    "detail": "a 900000ms backoff was retried after 1505ms; flush ceiling 120000ms"
+  },
+  {
+    "name": "notices fit the balloon, are throttled per kind, and are recorded for status",
+    "ok": true,
+    "ms": 20901,
+    "detail": "6 kinds, longest text 233 chars; shown, throttled and recorded"
+  },
+  {
+    "name": "the certificate pin is compared on every new connection, not only the first",
+    "ok": true,
+    "ms": 644,
+    "detail": "right pin passes twice, wrong pin refused twice, no session reused between them"
+  },
+  {
+    "name": "every advertised client command returns instead of hanging",
+    "ok": true,
+    "ms": 1701,
+    "detail": "exited in time, enrollment read as not_enrolled, wrong pin exits 1"
+  }
+]

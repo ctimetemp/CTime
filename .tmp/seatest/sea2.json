@@ -1,0 +1,1 @@
+{ "main": "main.mjs", "output": "testapp.exe", "disableExperimentalSEAWarning": true }

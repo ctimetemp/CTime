@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="csrf" content="7b6574f3d237c4496e1d5d83f541aa5c">
+<title>WS-FIN-0213 · CTTIme</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="mark">Z</span><span>CTTIme</span><span class="sub">endpoint visibility</span></div>
+  <div class="session"><span class="who">itadmin</span><button class="linklike" data-action="logout" type="button">Sign out</button></div>
+</header>
+<nav class="tabs"><a class="navitem active" href="index.html">Overview<span class="navcount">1</span></a><a class="navitem" href="screenshots.html">Screenshots</a><a class="navitem" href="extensions.html">Extensions</a><a class="navitem" href="clipboard.html">Clipboard</a><a class="navitem" href="health.html">Telemetry health</a><a class="navitem" href="audit.html">Audit log</a><a class="navitem" href="policy.html">Policy</a></nav>
+
+<main>
+<section class="region">
+  <div class="regionhead"><h2><a href="index.html" class="crumb">Devices</a> / WS-FIN-0213</h2>
+    <div class="stateline"><span class="badge b-pending_approval">Pending approval</span>
+      <span class="dot"></span>last seen 
+      <span class="dot"></span>127.0.0.1
+      <span class="dot"></span>agent 1.0.0
+      <span class="pill stale">policy stale</span>
+      
+    </div><div class="actions">
+    <button type="button" class="btn primary" data-action="approve" data-id="566d3452-e000-43c1-80bd-c5d1500836c9" data-name="WS-FIN-0213">Approve</button>
+    <button type="button" class="btn" data-action="reject" data-id="566d3452-e000-43c1-80bd-c5d1500836c9" data-name="WS-FIN-0213">Reject</button>
+    
+    
+    <button type="button" class="btn" data-action="export" data-id="566d3452-e000-43c1-80bd-c5d1500836c9" data-name="WS-FIN-0213">Export all data (JSON)</button>
+  </div></div>
+  <div class="twocol">
+    <div>
+      <h3>Identity</h3>
+      <div class="kvlist">
+        <div class="kv"><span class="k">Device id</span><span class="v "><span class="mono">566d3452-e000-43c1-80bd-c5d1500836c9</span></span></div>
+        <div class="kv"><span class="k">Device user</span><span class="v ">a.novak</span></div>
+        <div class="kv"><span class="k">OS build</span><span class="v ">Windows 11 Pro 23H2 (22631)</span></div>
+        <div class="kv"><span class="k">Enrolled</span><span class="v "><time class="t" datetime="2026-10-15T13:59:10.000Z">2026-10-15 13:59Z</time></span></div>
+        <div class="kv"><span class="k">Policy etag</span><span class="v "><span class="mono">none</span></span></div>
+        <div class="kv"><span class="k">Current etag</span><span class="v "><span class="mono">&quot;5815fa6b03d56db3&quot;</span></span></div>
+        <div class="kv"><span class="k">Spool</span><span class="v ">— · 0 dropped</span></div>
+        <div class="kv"><span class="k">Last flush</span><span class="v "><span class="t muted">—</span> · — ms</span></div>
+      </div>
+      <h3>Consent record</h3><div class="consent">
+        <div class="kv"><span class="k">Acknowledged by</span><span class="v ">a.novak</span></div>
+        <div class="kv"><span class="k">Acknowledged at</span><span class="v "><time class="t" datetime="2026-10-15T13:56:10.000Z">2026-10-15 13:56Z</time></span></div>
+        <div class="kv"><span class="k">Notice version</span><span class="v ">2026-10-15.1</span></div>
+        <div class="kv"><span class="k">Approved by</span><span class="v ">—</span></div>
+        <div class="kv"><span class="k">Approved at</span><span class="v "><span class="t muted">—</span></span></div>
+      </div>
+      <h3>Volumes</h3>
+      <div class="kvlist">
+        <div class="kv"><span class="k">Screenshots</span><span class="v ">0</span></div>
+        <div class="kv"><span class="k">Screen states</span><span class="v ">0</span></div>
+        <div class="kv"><span class="k">Clipboard samples</span><span class="v ">0</span></div>
+        <div class="kv"><span class="k">Extension rows</span><span class="v ">0 · last </span></div>
+      </div>
+    </div>
+    <div>
+      <h3>Recent screenshots <span class="sub">0 total</span></h3>
+      <div class="thumbs"><p class="muted">None captured yet.</p></div>
+      <h3>Recent clipboard metrics</h3>
+      <table class="compact"><thead><tr><th>Sampled</th><th class="num">Chars</th><th>Kind</th><th>SHA-256 (truncated)</th></tr></thead>
+        <tbody><tr class="empty"><td colspan="4">No samples yet.</td></tr></tbody></table>
+      <h3>Extension inventory</h3>
+      <table class="compact"><thead><tr><th>Browser</th><th>Extension</th><th>Version</th><th>Source</th><th class="num">State</th><th class="num">Perms</th></tr></thead>
+        <tbody><tr class="empty"><td colspan="6">No inventory submitted yet.</td></tr></tbody></table>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="foot">
+  <p><strong>Disclosed monitoring.</strong> Agents run as a named Task Scheduler job
+    &ldquo;CTTIme Endpoint Visibility&rdquo;, write a local log, and can be uninstalled with
+    uninstall.ps1. Clipboard content is never collected: only a character count, a SHA-256 and a
+    kind label. Screenshots are never analysed by OCR or image recognition.
+    Notice version in force: <code>2026-10-15.1</code>.</p>
+</footer>
+<script src="app.js" defer></script>
+</body>
+</html>

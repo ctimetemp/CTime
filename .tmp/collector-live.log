@@ -1,0 +1,25 @@
+
+  CTTIme collector
+  listening      https://127.0.0.1:8443
+  connect via    https://127.0.0.1:8443   (bound to one interface only)
+                 loopback: only this machine can reach it. To serve the LAN,
+                 start with CTTIme_BIND=<this machine's LAN address>.
+  database       D:\CTTIme\server\data\collector.db
+  screenshots    D:\CTTIme\server\data\screenshots
+  cert SHA-256   01c647dd394181e596988d7ea4c18f8369aa0b08e4ba598de7dc68564a928767
+
+  Pin that fingerprint in the agent (--pin <hex>). There is no plaintext fallback
+  and no negotiated downgrade if it does not match.
+
+  No administrator account yet. Nothing is collected until one exists, because
+  an agent cannot be approved by nobody.
+
+  Claim the first account at   https://127.0.0.1:8443/login
+  first-run code              L23Y5-XA7N6-YBD7Y
+  (also in D:\CTTIme\server\data\first-run-code.txt)
+
+  The code is random to this installation, is deleted the moment an account is
+  created, and cannot sign anything in by itself. Prefer the console instead:
+  node scripts/make-account.js <name>
+  database upgraded in place: added token_delivered_at, first_contact_at, first_data_at to devices
+

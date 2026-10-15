@@ -1,0 +1,16 @@
+2026-10-15T18:21:27.859Z not collecting: pending_approval
+2026-10-15T18:21:38.503Z approval check failed: tls_pin_mismatch
+2026-10-15T18:21:58.329Z approved; token sealed into token.bin with DPAPI CurrentUser
+2026-10-15T18:21:58.409Z agent running pid=6540 device=00000000-0000-4000-8000-000000000000
+2026-10-15T18:22:08.507Z approval check failed: tls_pin_mismatch
+2026-10-15T18:22:38.515Z approval check failed: tls_pin_mismatch
+2026-10-15T18:23:08.528Z approval check failed: tls_pin_mismatch
+2026-10-15T18:23:38.531Z approval check failed: tls_pin_mismatch
+2026-10-15T18:24:08.542Z approval check failed: tls_pin_mismatch
+2026-10-15T18:24:38.560Z approval check failed: tls_pin_mismatch
+2026-10-15T18:25:08.571Z approval check failed: tls_pin_mismatch
+2026-10-15T18:25:38.608Z approval check failed: tls_pin_mismatch
+2026-10-15T18:26:08.616Z approval check failed: tls_pin_mismatch
+2026-10-15T18:26:38.634Z approval check failed: tls_pin_mismatch
+2026-10-15T18:26:59.589Z shot terminal: token_mismatch X-Device-Id does not match the token
+2026-10-15T18:27:08.645Z approval check failed: tls_pin_mismatch

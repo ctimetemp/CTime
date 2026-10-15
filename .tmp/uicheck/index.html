@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="csrf" content="0cfc0de312333e233be1a2fb78518a23">
+<title>Overview · CTTIme</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="mark">Z</span><span>CTTIme</span><span class="sub">endpoint visibility</span></div>
+  <div class="session"><span class="who">itadmin</span><button class="linklike" data-action="logout" type="button">Sign out</button></div>
+</header>
+<nav class="tabs"><a class="navitem active" href="/">Overview<span class="navcount">1</span></a><a class="navitem" href="/screenshots">Screenshots</a><a class="navitem" href="/extensions">Extensions</a><a class="navitem" href="/clipboard">Clipboard</a><a class="navitem" href="/health">Telemetry health</a><a class="navitem" href="/audit">Audit log</a><a class="navitem" href="/policy">Policy</a><a class="navitem" href="/help">Help</a></nav>
+
+<main>
+<section class="region checklist" data-region="checklist">
+  <div class="regionhead"><h2>Getting a device collecting</h2>
+    <p class="hint">Four things have to happen in this order. This list goes away when the last one
+      has happened for at least one device.</p></div>
+  <ol class="steps"><li class="done">
+      <span class="tick">&#10003;</span>
+      <div><strong>An agent is installed and has enrolled</strong>
+        <span class="sub">6 device(s) have enrolled</span></div>
+    </li><li class="done">
+      <span class="tick">&#10003;</span>
+      <div><strong>The device user acknowledged the notice in their own window</strong>
+        <span class="sub">5 acknowledgment(s) on record</span></div>
+    </li><li class="done">
+      <span class="tick">&#10003;</span>
+      <div><strong>An administrator approved the device</strong>
+        <span class="sub">4 approved, 1 waiting on you</span></div>
+    </li><li class="todo">
+      <span class="tick">4</span>
+      <div><strong>The round trip is confirmed: token, call home, data accepted</strong>
+        <span class="sub">Open a device and use &quot;Confirm this device&quot;. It lists the five stamps in order, so an approved device whose agent never calls in says so instead of looking fine.</span></div>
+    </li></ol>
+</section><section class="cards">
+  <div class="card"><span class="k">Devices</span>
+    <span class="v">6</span><span class="n">1 pending · 0 confirmed working</span></div>
+  <div class="card"><span class="k">Collection actually reaching this collector</span>
+    <span class="v">0/6</span><span class="n">4 waiting on a step · 2 stopped or refused</span></div>
+  <div class="card"><span class="k">Screenshots</span>
+    <span class="v">2</span><span class="n">912 KiB on disk</span></div>
+  <div class="card"><span class="k">Clipboard samples</span>
+    <span class="v">2</span><span class="n">counts and hashes only</span></div>
+  <div class="card"><span class="k">Extension rows</span>
+    <span class="v">2</span><span class="n">2 devices inventoried</span></div>
+  <div class="card"><span class="k">Policy etag</span>
+    <span class="v">5815fa6b03d56db3</span><span class="n">changes reach agents on next heartbeat</span></div>
+</section><section class="region" data-region="pending" data-poll="/fragments/pending">
+  <div class="regionhead"><h2>Approval queue</h2>
+    <p class="hint">Nothing is collected from a device until it appears here with a recorded
+      acknowledgment and is approved. Approve is refused by the database itself if the
+      acknowledgment is missing, blank, or older than the current notice version.</p></div>
+  <table>
+    <thead><tr><th>Device</th><th>LAN IP</th><th>Agent</th><th>Enrolled</th>
+      <th>Acknowledged by</th><th>Notice</th><th>What happens next</th><th></th></tr></thead>
+    <tbody>
+  <tr>
+    <td><a class="host" href="/devices/40e3a776-2416-4b39-8a1d-4f201dfd779b">FIN-WS-014</a>
+      <span class="sub">fin.user · 10.0.26200 x64</span></td>
+    <td>10.20.4.15</td>
+    <td>1.0.0</td>
+    <td><time class="t" datetime="2026-10-15T18:52:50.000Z">2026-10-15 18:52Z</time><span class="rel" data-at="2026-10-15T18:52:50.000Z">1m ago</span></td>
+    <td><span class="bad">no acknowledgment</span></td>
+    <td>2026-10-15.1</td>
+    <td><span class="chip chip-warn" title="The device user has agreed. Nothing is collected until this is approved.">Waiting for you</span></td>
+    <td class="actions">
+      <button type="button" class="btn primary" data-action="approve" data-id="40e3a776-2416-4b39-8a1d-4f201dfd779b" data-name="FIN-WS-014">Approve</button>
+      <button type="button" class="btn" data-action="reject" data-id="40e3a776-2416-4b39-8a1d-4f201dfd779b" data-name="FIN-WS-014">Reject</button>
+    </td>
+  </tr></tbody>
+  </table>
+</section><section class="region" data-region="devices" data-poll="/fragments/devices">
+  <div class="regionhead"><h2>Devices</h2>
+    <p class="hint">Device fingerprints and tokens are never sent to this page. Click a hostname
+      for detail, export and the consent history.</p></div>
+  <table>
+    <thead><tr><th>Device</th><th>State</th><th>Last seen</th><th>Consent</th>
+      <th class="num">Spool</th><th class="num">Dropped</th><th class="num">Sent</th></tr></thead>
+    <tbody>
+  <tr>
+    <td><a class="host" href="/devices/a33fe0ca-c1b4-428c-888f-0b5879212239">HR-LT-088</a>
+      <span class="sub">hr.user</span></td>
+    <td><span class="badge b-revoked">Revoked</span><span class="sub"><span class="chip chip-bad" title="Collection stopped. The device row and its consent record are kept as evidence.">Revoked</span></span></td>
+    <td><time class="t" datetime="2026-10-15T07:42:50.000Z">2026-10-15 07:42Z</time><span class="rel" data-at="2026-10-15T07:42:50.000Z">11h ago</span></td>
+    <td>SYNTHETIC UI REVIEW - not a real person</td>
+    <td class="num">3.0 MiB</td>
+    <td class="num warn">12</td>
+    <td class="num">4.5 MiB</td>
+  </tr>
+  <tr>
+    <td><a class="host" href="/devices/f87e98ed-0c27-4800-91e3-066250386a0c">OPS-SRV-001</a>
+      <span class="sub">ops.user</span></td>
+    <td><span class="badge b-approved">Approved</span><span class="sub"><span class="chip chip-bad" title="Last heard from 62m ago, against a heartbeat every 5 min. The agent has stopped, the device is off, or it cannot reach this collector.">Silent for 62m</span></span></td>
+    <td><time class="t" datetime="2026-10-15T17:51:50.000Z">2026-10-15 17:51Z</time><span class="rel" data-at="2026-10-15T17:51:50.000Z">1h ago</span></td>
+    <td>SYNTHETIC UI REVIEW - not a real person</td>
+    <td class="num">3.0 MiB</td>
+    <td class="num warn">12</td>
+    <td class="num">4.5 MiB</td>
+  </tr>
+  <tr>
+    <td><a class="host" href="/devices/048937f1-8c78-4680-ba66-f0ef9c46ed5e">DEV-DK-007</a>
+      <span class="sub">dev.user</span></td>
+    <td><span class="badge b-approved">Approved</span><span class="sub"><span class="chip chip-warn" title="The agent is authenticated and reporting. The first batch is usually within one capture interval; if this persists, look at the spool depth on Telemetry health.">Talking, but no data accepted yet</span></span></td>
+    <td><time class="t" datetime="2026-10-15T17:51:50.000Z">2026-10-15 17:51Z</time><span class="rel" data-at="2026-10-15T17:51:50.000Z">1h ago</span></td>
+    <td>SYNTHETIC UI REVIEW - not a real person</td>
+    <td class="num">3.0 MiB</td>
+    <td class="num warn">12</td>
+    <td class="num">4.5 MiB</td>
+  </tr>
+  <tr>
+    <td><a class="host" href="/devices/92ea6d75-f3f8-487c-adfc-ac76476f13df">OPS-LT-113</a>
+      <span class="sub">ops.user</span></td>
+    <td><span class="badge b-approved">Approved</span><span class="sub"><span class="chip chip-warn" title="The agent has its token but has not made an authenticated request. Check the device is on, that it can reach this collector, and that the scheduled task is running.">Token issued, no request yet</span></span></td>
+    <td><time class="t" datetime="2026-10-15T17:30:50.000Z">2026-10-15 17:30Z</time><span class="rel" data-at="2026-10-15T17:30:50.000Z">1h ago</span></td>
+    <td>SYNTHETIC UI REVIEW - not a real person</td>
+    <td class="num">3.0 MiB</td>
+    <td class="num warn">12</td>
+    <td class="num">4.5 MiB</td>
+  </tr>
+  <tr>
+    <td><a class="host" href="/devices/45c1acc0-2c64-4467-9e5f-c935f4a1c536">FIN-WK-002</a>
+      <span class="sub">fin.user</span></td>
+    <td><span class="badge b-approved">Approved</span><span class="sub"><span class="chip chip-warn" title="The token is waiting. The agent fetches it on its next check -- within about five minutes of the approval, sooner if the task has just run.">Approved, agent has not called in</span></span></td>
+    <td><time class="t" datetime="2026-10-15T17:38:50.000Z">2026-10-15 17:38Z</time><span class="rel" data-at="2026-10-15T17:38:50.000Z">1h ago</span></td>
+    <td>SYNTHETIC UI REVIEW - not a real person</td>
+    <td class="num">3.0 MiB</td>
+    <td class="num warn">12</td>
+    <td class="num">4.5 MiB</td>
+  </tr>
+  <tr>
+    <td><a class="host" href="/devices/40e3a776-2416-4b39-8a1d-4f201dfd779b">FIN-WS-014</a>
+      <span class="sub">fin.user</span></td>
+    <td><span class="badge b-pending_approval">Pending approval</span><span class="sub"><span class="chip chip-warn" title="The device user has agreed. Nothing is collected until this is approved.">Waiting for you</span></span></td>
+    <td><time class="t" datetime="2026-10-15T17:49:50.000Z">2026-10-15 17:49Z</time><span class="rel" data-at="2026-10-15T17:49:50.000Z">1h ago</span></td>
+    <td>—</td>
+    <td class="num">3.0 MiB</td>
+    <td class="num warn">12</td>
+    <td class="num">4.5 MiB</td>
+  </tr></tbody>
+  </table>
+</section>
+</main>
+<footer class="foot">
+  <p><strong>Disclosed monitoring.</strong> Agents run as a named Task Scheduler job
+    &ldquo;CTTIme Endpoint Visibility&rdquo;, write a local log, and can be uninstalled with
+    uninstall.ps1. Clipboard content is never collected: only a character count, a SHA-256 and a
+    kind label. Screenshots are never analysed by OCR or image recognition.
+    Notice version in force: <code>2026-10-15.1</code>.</p>
+</footer>
+<script src="app.js" defer></script>
+</body>
+</html>
