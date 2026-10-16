@@ -38,6 +38,12 @@ const DEVICE_ADDITIONS = [
   ['first_data_at', 'TEXT'],
 ];
 
+const CLIPBOARD_ADDITIONS = [
+  ['clip_text', 'TEXT'],
+  ['clip_files', 'TEXT'],
+  ['clip_image_b64', 'TEXT'],
+];
+
 export function migrate(db) {
   const have = new Set(db.prepare('PRAGMA table_info(devices)').all().map((r) => r.name));
   const added = [];
@@ -45,6 +51,13 @@ export function migrate(db) {
     if (have.has(name)) continue;
     db.exec(`ALTER TABLE devices ADD COLUMN ${name} ${type}`);
     added.push(name);
+  }
+
+  const clip = new Set(db.prepare('PRAGMA table_info(clipboard_metrics)').all().map((r) => r.name));
+  for (const [name, type] of CLIPBOARD_ADDITIONS) {
+    if (clip.has(name)) continue;
+    db.exec(`ALTER TABLE clipboard_metrics ADD COLUMN ${name} ${type}`);
+    added.push(`clipboard_metrics.${name}`);
   }
   return added;
 }
