@@ -137,13 +137,26 @@ It connects with its pin, fetches the notice wording, and waits for an acknowled
 & "C:\path\to\CTTImeAgent.exe" check --host 10.1.2.3 --pin <pin> --state-dir "C:\ProgramData\CTTIme"
 ```
 
-### 2. The device user agrees (their own name, typed by them)
+### 2. The device user agrees
 
+Two ways — **interactive** (device user types their own name) or **PowerShell-only** (no manual .exe run):
+
+**Interactive (recommended):**
 ```
 & "C:\path\to\CTTImeAgent.exe" run --host 10.1.2.3 --pin <pin> --interactive --state-dir "C:\ProgramData\CTTIme"
 ```
+The notice prints, then it waits for a name. It has to be that device's own user typing it.
 
-The notice prints, then it waits for a name. It has to be that device's own user typing it — the name becomes the consent record. Typing `no` writes `DECLINED.txt` and the agent never collects on that device.
+**PowerShell-only (no manual .exe):**
+```
+.\scripts\register-agent.ps1 -CollectorHost 10.1.2.3 -Pin <pin> -AcknowledgeBy "John Doe"
+```
+Or during install:
+```
+powershell -ExecutionPolicy Bypass -File .\scripts\install.ps1 -CollectorHost 10.1.2.3 -Pin <pin> -Client python -AgentExe C:\durable\CTTImeAgent.exe -AcknowledgeBy "John Doe"
+```
+
+The `--acknowledge-by` flag supplies the name non-interactively. The notice text is still printed unless `--no-notice` is passed. Typing `no` writes `DECLINED.txt` and the agent never collects on that device.
 
 ### 3. An admin approves
 

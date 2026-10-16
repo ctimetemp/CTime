@@ -39,6 +39,8 @@ param(
     [string] $StateDir = (Join-Path $env:PROGRAMDATA 'CTTIme'),
     [string] $TaskName = 'CTTIme Endpoint Visibility',
     [switch] $Acknowledge,
+    [string] $AcknowledgeBy,
+    [switch] $NoNotice,
     [switch] $DryRun
 )
 
@@ -264,10 +266,21 @@ if ($Acknowledge) {
     try {
         & $Execute @($ExecuteArgs + @('--interactive'))
     } finally { Pop-Location }
-} else {
+}
+elseif ($AcknowledgeBy) {
+    Write-Host "Acknowledging non-interactively as: $AcknowledgeBy" -ForegroundColor Yellow
+    Push-Location $agentDir
+    try {
+        $ackArgs = @($ExecuteArgs) + @('--acknowledge-by', $AcknowledgeBy)
+        if ($NoNotice) { $ackArgs += '--no-notice' }
+        & $Execute @ackArgs
+    } finally { Pop-Location }
+}
+else {
     Write-Host 'Not enrolled yet: the agent will show the notice and collect nothing until'
     Write-Host "the device user acknowledges it. To do that now, re-run with -Acknowledge, or:"
     Write-Host "  $ReadCommand run --host $CollectorHost --port $CollectorPort --pin $Pin --state-dir `"$StateDir`" --interactive"
+    Write-Host "Or register non-interactively: $ReadCommand run --host $CollectorHost --port $CollectorPort --pin $Pin --state-dir `"$StateDir`" --acknowledge-by `"<name>`" --no-notice"
 }
 
 Write-Host ''
