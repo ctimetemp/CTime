@@ -10,9 +10,14 @@ recorded, and the approval trail survives the device being removed.
 There is no clipboard text anywhere in this system: not in the wire format, not in the database, not in
 a log line. Screenshots are stored as pictures and are never read by OCR or image analysis.
 
-This file is the operating manual: install, register, run, review. For the deeper material see
+This file is the operating manual: install, register, run, review, stop. For the deeper material see
 [docs/GUIDE.md](docs/GUIDE.md) (troubleshooting), [docs/API-CONTRACT.md](docs/API-CONTRACT.md)
 (the wire contract) and [docs/PACKAGING.md](docs/PACKAGING.md) (the single-file builds).
+
+**Contents** — [1. Install the collector](#1-install-the-collector) ·
+[2. Install the agent](#2-install-the-agent-on-a-device) · [3. Register a device](#3-register-a-device-with-the-collector) ·
+[4. Run the agent code](#4-run-the-agent-code-by-hand) · [5. Which process is which](#5-which-process-is-which) ·
+[6. The dashboard](#6-review-it-on-the-dashboard) · [7. Stop, pause or remove](#7-stop-pause-or-remove)
 
 **What you need**
 
@@ -61,9 +66,8 @@ bound to the machine's LAN address. Overrides, all optional:
 | `CTTIme_DATA` | `server\data` | Where the database, certificate and screenshots live. |
 | `CTTIme_DB` / `CTTIme_SHOTS` | inside `CTTIme_DATA` | Move one of them only. |
 
-Extra ports are **availability, never identity**: every listener shares the one certificate, so the pin
-is unchanged and a pin mismatch never causes a port switch. A device that cannot reach one port tries
-the next.
+Extra ports are **availability, never identity**: every listener shares the one certificate, so the pin is
+unchanged and a pin mismatch never causes a port switch.
 
 ### Make the first login
 
@@ -107,8 +111,8 @@ Start-Process -FilePath node -ArgumentList 'server\index.js' -WorkingDirectory '
 
 In `cmd.exe`: `set CTTIme_BIND=10.1.2.3&& start /min node server\index.js`.
 
-Is it answering? `netstat -ano | findstr :8443` should show `LISTENING` on the address you bound. To
-stop it, `taskkill /pid <that pid>`.
+Is it answering? `netstat -ano | findstr :8443` should show `LISTENING` on the address you bound. To stop
+it, §7.
 
 ---
 
@@ -312,14 +316,14 @@ Plaintext, and it records refusals too. Most lines are the gate working:
 | `not collecting: declined` + `DECLINED.txt` | The user refused | Recorded and respected |
 | `not collecting: revoked` / `rejected` | An admin stopped this device with a reason | Re-enable on the dashboard, which carries no consent over |
 | `not collecting: token_issuance_missed` | Approved, but the token never arrived | Rotate the device's token from the dashboard |
-| `Silent for N m` on the dashboard | The agent stopped reporting | Task, machine, pin — in that order |
 
 `declined`, `rejected`, `revoked` and `token_issuance_missed` are terminal: the agent sits there until a
-human changes the state on the device or in the dashboard.
+human changes the state on the device or in the dashboard. A device that stops logging altogether is a
+different symptom, and §6's verdict column names it.
 
 ---
 
-## Which process is which
+## 5. Which process is which
 
 The collector and the agent are different programs, and on a test machine they run side by side under the
 *same* image name. `Get-Process node` proves nothing on its own: read the command line.
@@ -337,20 +341,17 @@ Three things that look wrong and are not:
 - **The collector has no children.** One `node.exe` running `server\index.js` is the whole server. If it
   spawned anything, that is a bug worth reporting.
 - **`powershell.exe` appearing and disappearing on a device is the agent working.** Screenshots, clipboard
-  metrics, the desktop notice and the DPAPI token seal each run as a short PowerShell probe
-  ([QODER.md](QODER.md) requires PowerShell for Windows API access instead of native modules). They never
-  stay resident; the agent itself is one process. The Node route seals the token with an inline
-  `powershell -Command`, so that particular child shows a script body in its command line rather than a
-  `.ps1` filename.
+  metrics, the desktop notice and the DPAPI seal each run as a short probe and never stay resident
+  ([QODER.md](QODER.md) requires PowerShell for Windows API access instead of native modules). The Node
+  route seals its token with an inline `powershell -Command`, so that child shows a script body in its
+  command line rather than a `.ps1` filename.
 - **Two `CTTImeAgent.exe` entries are normal** with the packaged route: PyInstaller's `--onefile` starts a
   bootloader parent that unpacks and then runs the real child. Two entries of the *same* `node.exe cli.js
   run` line are **not** normal — that is the scheduled task and a hand-run competing, and `schtasks /query`
   plus `taskkill` on the extra PID settles it.
 
-`--resident` in the command line is the marker that a process is the scheduled agent rather than someone's
-manual run: only the task passes it, and it is the only invocation that suppresses the console window.
-Everything else — `check`, `status`, `what-collects`, `one-shot`, `run --interactive` — keeps its window
-because a person is reading it.
+`--resident` is what separates the task's agent from someone's manual run in that output: only the task
+passes it (§4).
 
 ```powershell
 Get-CimInstance Win32_Process |
@@ -373,7 +374,7 @@ the shell you typed it in and labels it an agent.
 
 ---
 
-## 5. Review it on the dashboard
+## 6. Review it on the dashboard
 
 Sign in at `https://<collector>:8443`. The Overview answers the one question that matters after an
 install — **is anything actually arriving, and if not, which step is stuck.** It shows how many devices
@@ -410,20 +411,66 @@ way to bulk-remove them.
 
 ---
 
-## 6. Remove a device
+## 7. Stop, pause or remove
+
+### Close either one right now
+
+`Ctrl-C` in the window that started it is the whole manual stop, for the collector and for the agent. If it
+is running detached or with no window, find the process and kill it:
 
 ```
+netstat -ano | findstr :8443
+taskkill /pid <PID>
+```
+
+```powershell
+# the collector, by port
+Get-NetTCPConnection -LocalPort 8443 -State Listen |
+  ForEach-Object { Stop-Process -Id $_.OwningProcess -Force }
+
+# both programs, when they share the name node.exe: read the command line before killing
+Get-CimInstance Win32_Process -Filter "Name='node.exe'" | Select-Object ProcessId, CommandLine
+```
+
+`server\index.js` is the collector, `cli.js run` is an agent. The collector has no task, no service and no
+watchdog, so once it is stopped it stays stopped until you start it again.
+
+### The agent comes back
+
+Killing the agent's process is temporary: the scheduled task relaunches it within 5 minutes, or at the next
+logon. To keep a device closed, stop the task too:
+
+```
+schtasks /end    /tn "CTTIme Endpoint Visibility"
+schtasks /change /tn "CTTIme Endpoint Visibility" /disable
+```
+
+`/disable` is the one to use day to day. The install, the consent record, the log and the sealed token all
+stay on disk, and `/enable` puts the device back on the schedule. `/delete` removes the persistence
+permanently but still leaves `C:\ProgramData\CTTIme` and its token in place.
+
+| Want | Use |
+|---|---|
+| Stop for an hour, keep everything | `Ctrl-C`, or `schtasks /end` |
+| Closed until you re-enable it | `schtasks /change … /disable` |
+| Stop the process only | `taskkill /pid <PID>` (the task restarts it) |
+| Remove it, keep evidence | `uninstall.ps1 -KeepData` |
+| Remove the device cleanly | revoke on the dashboard, then `uninstall.ps1` |
+
+### Remove it for good
+
+```
+powershell -File C:\ProgramData\CTTIme\setup\scripts\uninstall.ps1 -DryRun
 powershell -File C:\ProgramData\CTTIme\setup\scripts\uninstall.ps1
 ```
 
-(Installed by copying the folder? `uninstall.ps1` is in that copy's `scripts` folder. `ABOUT.txt` prints
-the right path for the way your device was installed.)
+(Installed by copying the folder? `uninstall.ps1` is in that copy's `scripts` folder. `ABOUT.txt` prints the
+right path for the way your device was installed.)
 
-It stops and unregisters the task, then deletes the state folder — code, config, log, queue and sealed
-token. `-KeepData` leaves logs and queue in place for an audit; `-DryRun` shows what it would remove.
-Data the collector already received stays there until retention ages it out or an admin deletes it, so
-**revoke the device on the dashboard first** — that records the revocation with a reason. The device row
-and its consent record are kept on purpose.
+It stops and unregisters the task, then deletes the state folder: code, config, log, queue and sealed
+token. `-KeepData` leaves logs and queue for an audit. Data the collector already received stays there
+until retention ages it out or an admin deletes it, so **revoke the device on the dashboard first** — that
+records the removal with a reason. The device row and its consent record are kept on purpose.
 
 ---
 
