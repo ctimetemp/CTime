@@ -239,7 +239,7 @@ export function pageCounts({ counts, tally, etag }) {
     `${fmtNum(tally.working)}/${fmtNum(counts.devices)}`,
     `${fmtNum(tally.waiting)} waiting on a step · ${fmtNum(tally.stopped)} stopped or refused`) : ''}
   ${card('Screenshots', fmtNum(counts.screenshots), `${fmtBytes(counts.screenshot_bytes)} on disk`)}
-  ${card('Clipboard samples', fmtNum(counts.clipboard), 'counts and hashes only')}
+  ${card('Clipboard samples', fmtNum(counts.clipboard), 'captured content sent to the collector')}
   ${card('Extension rows', fmtNum(counts.extensions), `${fmtNum(counts.ext_devices)} devices inventoried`)}
   ${card('Policy etag', etag.replace(/"/g, ''), 'changes reach agents on next heartbeat')}
 </section>`;
@@ -413,11 +413,11 @@ export function pageClipboard({ items, histogram, next, hasMore, hrefBase, now, 
     <td class="mono">${esc(String(c.sha256).slice(0, 24))}</td>
   </tr>`).join('');
   return `<section class="region" data-region="clipboard"${pollAttr(poll)}>
-  <div class="regionhead"><h2>Clipboard metrics</h2>
-    <div class="noticebox"><strong>No content exists to be shown here.</strong> The agent hashes
-      the clipboard in memory and transmits only the character count, the digest and a coarse kind
-      label. There is no column, log line or spool record in the product capable of holding
-      clipboard text, and requests that try to send one are rejected with <code>422</code>.</div>
+  <div class="regionhead"><h2>Clipboard capture</h2>
+    <div class="noticebox"><strong>Clipboard content is captured and stored here.</strong> The agent
+      captures the actual clipboard — text, copied file paths, and images — every
+      <code>clipboard_sample_seconds</code> and sends it to the collector. The SHA-256 digest travels
+      alongside so you can verify content unchanged between samples.</div>
     ${filterForm([deviceField(deviceOptions)], hrefBase)}</div>
   <table class="compact hist"><thead><tr><th>Kind</th><th class="num">Samples</th>
     <th class="num">Mean chars</th><th class="num">Min</th><th class="num">Max</th></tr></thead>
@@ -664,7 +664,7 @@ export const KEY_NOTES = {
   screenshot_max_bytes: 'Bigger captures are dropped on the device before upload.',
   clipboard_metrics_enabled: 'Off stops sampling entirely; nothing is queued while it is off.',
   extension_inventory_enabled: 'Off stops the browser profile read completely.',
-  clipboard_sample_seconds: 'How often the clipboard is hashed in memory on the device.',
+  clipboard_sample_seconds: 'How often the clipboard is captured and sent to the collector.',
   heartbeat_interval_seconds: 'Control-plane poll; policy deltas arrive here.',
   batch_max_items: 'Flush when this many events are spooled.',
   batch_max_bytes: 'Flush when the spooled NDJSON reaches this size.',

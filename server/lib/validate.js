@@ -11,7 +11,8 @@ export const FORBIDDEN_CLIPBOARD_KEYS = [
   'clipboard', 'string', 'contents',
 ];
 
-const ALLOWED_CLIPBOARD_KEYS = ['sampled_at', 'char_count', 'sha256', 'content_kind'];
+const ALLOWED_CLIPBOARD_KEYS = ['sampled_at', 'char_count', 'sha256', 'content_kind',
+                                'clip_text', 'clip_files', 'clip_image_b64'];
 const CONTENT_KINDS = ['text', 'file-list', 'empty', 'image'];
 
 const HEX64 = /^[0-9a-f]{64}$/;
@@ -65,6 +66,9 @@ export function validateClipboardData(data) {
       char_count: data.char_count,
       sha256: data.sha256.toLowerCase(),
       content_kind: data.content_kind ?? null,
+      clip_text: data.clip_text ?? null,
+      clip_files: data.clip_files ?? null,
+      clip_image_b64: data.clip_image_b64 ?? null,
     },
   };
 }

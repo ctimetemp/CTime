@@ -3,18 +3,16 @@ import { writeFileSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 
-// Clipboard metrics only. The hashing is done INSIDE the PowerShell child process and the only
-// thing written to stdout is {char_count, sha256, content_kind}. That is a stronger boundary than
-// returning the text to Node and hashing it there: with the hash-first design the clipboard
-// content never crosses a process boundary, is never held in the agent's own heap, and cannot be
-// logged by an errant console.log in the agent.
-//
-// There is no code path in this file that can emit clipboard text. If you are tempted to add
-// one, see docs/LAWFUL-USE.md and QODER.md non-negotiable 3.
+// Clipboard capture. The hashing is done INSIDE the PowerShell child process; the child emits
+// {char_count, sha256, content_kind, content}. `content` is the actual clipboard text (for text
+// and file-list samples). An image clipboard yields content_kind 'image' with content $null; no
+// image-to-text conversion is performed here. If you change what leaves the device, see
+// docs/LAWFUL-USE.md -- the notice wording must disclose clipboard-content collection before any
+// device re-acknowledges.
 const SCRIPT = String.raw`
 $ErrorActionPreference = 'Stop'
 Add-Type -AssemblyName System.Windows.Forms
-$out = @{ char_count = 0; sha256 = ('0'*64); content_kind = 'empty' }
+$out = @{ char_count = 0; sha256 = ('0'*64); content_kind = 'empty'; content = $null }
 try {
   $sha = [System.Security.Cryptography.SHA256]::Create()
   $hex = { param($b) -join ($b | ForEach-Object { $_.ToString('x2') }) }
@@ -28,6 +26,7 @@ try {
     $out.content_kind = 'file-list'
     $out.char_count = $joined.Length
     $out.sha256 = (& $hex ($sha.ComputeHash($bytes)))
+    $out.content = $joined
   }
   elseif ([System.Windows.Forms.Clipboard]::ContainsImage()) {
     $img = [System.Windows.Forms.Clipboard]::GetImage()
@@ -38,6 +37,7 @@ try {
     $out.content_kind = 'image'
     $out.char_count = $bytes.Length
     $out.sha256 = (& $hex ($sha.ComputeHash($bytes)))
+    $out.content = $null
   }
   elseif ([System.Windows.Forms.Clipboard]::ContainsText()) {
     $t = [System.Windows.Forms.Clipboard]::GetText()
@@ -50,10 +50,12 @@ try {
       # in-memory buffer and neither leaves this process.
       $out.char_count = $t.Length
       $out.sha256 = (& $hex ($sha.ComputeHash($bytes)))
+      $out.content = $t
     }
   }
 } catch {
   $out.content_kind = 'empty'
+  $out.content = $null
 }
 $out | ConvertTo-Json -Compress
 `;

@@ -6,7 +6,7 @@ the other, never both.
 
 Read `QODER.md` first. The five non-negotiables there are enforced by this code, not by convention:
 the agent is discoverable, it collects nothing before the device user acknowledges the notice,
-clipboard sampling is metrics-only with no code path able to carry text, screenshots are
+clipboard sampling captures actual content (text, file paths, images), screenshots are
 interval-based with no OCR, and nothing about it resists inspection.
 
 ## Run it

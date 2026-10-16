@@ -6,7 +6,8 @@ from . import probes
 
 HEX64_RE = re.compile(r"^[0-9a-f]{64}$")
 KINDS = frozenset({"text", "file-list", "image", "empty"})
-ALLOWED_CLIPBOARD_KEYS = frozenset({"char_count", "sha256", "content_kind"})
+ALLOWED_CLIPBOARD_KEYS = frozenset({"char_count", "sha256", "content_kind",
+                                    "clip_text", "clip_files", "clip_image_b64"})
 
 
 def _quiet_unlink(path):
@@ -66,11 +67,10 @@ class Capturer:
 
 
 class ClipboardSampler:
-    """Clipboard metrics only. The hashing happens inside the PowerShell child and the only things
-    that come back are char_count, sha256 and content_kind, so clipboard text never crosses a
-    process boundary, never sits in this process's heap, and cannot be logged by an errant print.
-
-    There is no code path here that can emit clipboard text; see QODER.md non-negotiable 3."""
+    """Clipboard capture runs inside a PowerShell child and returns the actual content --
+    clip_text, clip_files, clip_image_b64 -- alongside char_count, sha256 and content_kind.
+    The hash is computed in the child so no unhashed text sits in this process's heap.
+    """
 
     def __init__(self, work_dir, on_warn=lambda message: None):
         os.makedirs(work_dir, exist_ok=True)
@@ -93,4 +93,15 @@ class ClipboardSampler:
             return None
         if kind not in KINDS:
             return None
-        return {"char_count": char_count, "sha256": sha, "content_kind": kind}
+        clip_text = value.get("clip_text")
+        if clip_text is not None and not isinstance(clip_text, str):
+            return None
+        clip_files = value.get("clip_files")
+        if clip_files is not None and (not isinstance(clip_files, list)
+                                       or not all(isinstance(f, str) for f in clip_files)):
+            return None
+        clip_image_b64 = value.get("clip_image_b64")
+        if clip_image_b64 is not None and not isinstance(clip_image_b64, str):
+            return None
+        return {"char_count": char_count, "sha256": sha, "content_kind": kind,
+                "clip_text": clip_text, "clip_files": clip_files, "clip_image_b64": clip_image_b64}

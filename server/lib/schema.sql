@@ -1,6 +1,6 @@
--- CTTIme collector schema. Loaded by server/lib/db.js on a fresh database only.
--- Clipboard note: there is deliberately no column anywhere in this file capable of holding
--- clipboard text. clipboard_metrics stores a count, a hash, and a kind label. Do not add one.
+-- CTTIme collector schema. clipboard_metrics stores a count, a hash, a kind label, and the
+-- captured content itself (clip_text, clip_files as newline-joined paths, clip_image_b64 as
+-- base64 PNG). The notice must say clipboard content is collected.
 
 PRAGMA foreign_keys = ON;
 
@@ -117,7 +117,10 @@ CREATE TABLE clipboard_metrics (
   sampled_at TEXT NOT NULL,
   char_count INTEGER NOT NULL,
   sha256 TEXT NOT NULL,
-  content_kind TEXT
+  content_kind TEXT,
+  clip_text TEXT,
+  clip_files TEXT,
+  clip_image_b64 TEXT
 );
 
 CREATE TABLE screen_states (
@@ -205,7 +208,7 @@ INSERT INTO policy (key, value, updated_at, updated_by) VALUES
   ('collector_bind', '0.0.0.0',              datetime('now'), 'system'),
   ('collector_port', '8443',                 datetime('now'), 'system'),
   ('heartbeat_interval_seconds', '300',      datetime('now'), 'system'),
-  ('clipboard_sample_seconds', '60',         datetime('now'), 'system'),
+  ('clipboard_sample_seconds', '300',        datetime('now'), 'system'),
   ('batch_max_items', '200',                 datetime('now'), 'system'),
   ('batch_max_bytes', '262144',              datetime('now'), 'system'),
   ('batch_max_age_seconds', '120',           datetime('now'), 'system'),

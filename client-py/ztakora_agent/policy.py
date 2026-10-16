@@ -10,7 +10,7 @@ AGENT_DEFAULTS = {
     "screenshot_max_bytes": 8388608,
     "clipboard_metrics_enabled": True,
     "extension_inventory_enabled": True,
-    "clipboard_sample_seconds": 60,
+    "clipboard_sample_seconds": 300,
     "heartbeat_interval_seconds": 300,
     "batch_max_items": 200,
     "batch_max_bytes": 262144,

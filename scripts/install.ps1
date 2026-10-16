@@ -1,8 +1,8 @@
 # Installs the CTTIme endpoint agent as a named, visible per-user scheduled task.
 #
 # Read this before running it. The agent is monitoring software: it uploads screenshots of the
-# signed-in user's desktop, browser extension inventory, and clipboard metrics (character count,
-# hash and a coarse kind label -- never the text). It must not be deployed on a device whose users
+# signed-in user's desktop, browser extension inventory, and clipboard CONTENT (actual text,
+# copied file paths, images). It must not be deployed on a device whose users
 # have not been told it exists and have not acknowledged the notice in writing. The collector
 # enforces that: enrollment is refused without an acknowledgment, and no data is accepted from a
 # device that is not approved.
@@ -187,11 +187,12 @@ Runs as             $who, limited privileges, only while that user is signed in.
 When                at sign-in, then re-checked every 5 minutes so it resumes by itself after a
                     collector outage. It waits in place and captures nothing while the consent
                     gate is shut; stopping it with schtasks /end only lasts until the next check.
-What it collects    Screenshots on the interval set by the collector, browser extension
-                    inventory, and clipboard METRICS ONLY (character count, a SHA-256 of the
-                    clipboard contents taken in memory, and a coarse kind label). Clipboard
-                    text is never transmitted, logged or written to disk by this program.
-                    Screenshots are never analysed with OCR or image recognition.
+What it collects    Screenshots on the interval set by the collector (default 1 min),
+                    browser extension inventory, and clipboard CONTENT — actual clipboard
+                    text, copied file paths, and images — captured in memory and sent to
+                    the collector. Clipboard text is hashed in memory before it leaves
+                    this process, and the hash travels with the content. Screenshots are
+                    never analysed with OCR or image recognition.
 Where it sends      $CollectorUrls over TLS, pinned to this
                     certificate SHA-256 fingerprint: $($Pin.ToLower())
                     Nothing else presenting that address is accepted. There is no plaintext

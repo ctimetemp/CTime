@@ -443,7 +443,7 @@ export function createAdminApi(ctx) {
         device,
         screenshots: db.prepare('SELECT id, event_id, captured_at, received_at, bytes, width, height, sha256, phash, expires_at FROM screenshots WHERE device_id = ? ORDER BY captured_at DESC').all(id),
         extension_inventory: db.prepare('SELECT event_id, collected_at, browser, profile, ext_id, name, version, source, permissions, enabled FROM extension_inventory WHERE device_id = ? ORDER BY collected_at DESC').all(id),
-        clipboard_metrics: db.prepare('SELECT event_id, sampled_at, char_count, sha256, content_kind FROM clipboard_metrics WHERE device_id = ? ORDER BY sampled_at DESC').all(id),
+        clipboard_metrics: db.prepare('SELECT event_id, sampled_at, char_count, sha256, content_kind, clip_text, clip_files, clip_image_b64 FROM clipboard_metrics WHERE device_id = ? ORDER BY sampled_at DESC').all(id),
         screen_states: db.prepare('SELECT event_id, sampled_at, state FROM screen_states WHERE device_id = ? ORDER BY sampled_at DESC').all(id),
       };
       // Recorded before the bytes go out: an export that is not logged is a data-subject request

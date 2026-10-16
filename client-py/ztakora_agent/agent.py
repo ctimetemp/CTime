@@ -163,6 +163,10 @@ class Scheduler:
                 self.flusher.flush_screenshots()
         elif job == "clipboard":
             self.producers.clipboard_tick()
+            # Clipboard sends on its own schedule, not on the heartbeat. Flush immediately so the
+            # captured clipboard leaves the device on the clipboard cadence rather than waiting for
+            # the next heartbeat tick.
+            self.flusher.flush_batch()
         elif job == "extensions":
             self.producers.extension_tick()
         elif job == "spool_cap":

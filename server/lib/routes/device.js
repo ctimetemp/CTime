@@ -45,8 +45,8 @@ export function createDeviceApi({ db, store, audit, notice }) {
     insTraffic: db.prepare(`INSERT INTO device_traffic (device_id, ts, bytes_sent, spool_bytes)
       VALUES (?, datetime('now'), ?, ?)`),
     insClip: db.prepare(`INSERT INTO clipboard_metrics
-      (device_id, event_id, sampled_at, char_count, sha256, content_kind)
-      VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT(event_id) DO NOTHING`),
+      (device_id, event_id, sampled_at, char_count, sha256, content_kind, clip_text, clip_files, clip_image_b64)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT(event_id) DO NOTHING`),
     insShotMeta: db.prepare(`INSERT INTO screenshots
       (device_id, event_id, captured_at, received_at, bytes, width, height, sha256, phash, storage_key, expires_at)
       VALUES (?, ?, ?, datetime('now'), ?, ?, ?, ?, ?, ?, ?) ON CONFLICT(event_id) DO NOTHING`),
@@ -268,7 +268,9 @@ export function createDeviceApi({ db, store, audit, notice }) {
               const v = validateClipboardData(e.data);
               if (!v.ok) { counts.malformed += 1; break; }
               const r = q.insClip.run(row.id, e.event_id, v.value.sampled_at, v.value.char_count,
-                v.value.sha256, v.value.content_kind);
+                v.value.sha256, v.value.content_kind, v.value.clip_text,
+                v.value.clip_files ? JSON.stringify(v.value.clip_files) : null,
+                v.value.clip_image_b64);
               counts[r.changes ? 'accepted' : 'duplicates'] += 1;
               break;
             }
@@ -390,7 +392,9 @@ export function createDeviceApi({ db, store, audit, notice }) {
       const eventId = req.headers['x-event-id'] ?? randomUUID();
       if (!isUuid(String(eventId))) throw new HttpError(400, 'bad_request', 'X-Event-Id must be a UUID');
       const r = q.insClip.run(row.id, eventId, v.value.sampled_at, v.value.char_count,
-        v.value.sha256, v.value.content_kind);
+        v.value.sha256, v.value.content_kind, v.value.clip_text,
+        v.value.clip_files ? JSON.stringify(v.value.clip_files) : null,
+        v.value.clip_image_b64);
       if (r.changes) q.markFirstData.run(row.id);
       sendJson(res, r.changes ? 201 : 200, { accepted: r.changes ? 1 : 0, duplicate: !r.changes,
         event_id: eventId });

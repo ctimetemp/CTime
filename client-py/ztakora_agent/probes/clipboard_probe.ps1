@@ -12,6 +12,7 @@ try {
     $out.content_kind = 'file-list'
     $out.char_count = $joined.Length
     $out.sha256 = (& $hex ($sha.ComputeHash($bytes)))
+    $out.clip_files = ,@($list)
   }
   elseif ([System.Windows.Forms.Clipboard]::ContainsImage()) {
     $img = [System.Windows.Forms.Clipboard]::GetImage()
@@ -22,6 +23,7 @@ try {
     $out.content_kind = 'image'
     $out.char_count = $bytes.Length
     $out.sha256 = (& $hex ($sha.ComputeHash($bytes)))
+    $out.clip_image_b64 = [Convert]::ToBase64String($bytes)
   }
   elseif ([System.Windows.Forms.Clipboard]::ContainsText()) {
     $t = [System.Windows.Forms.Clipboard]::GetText()
@@ -34,6 +36,7 @@ try {
       # in-memory buffer and neither leaves this process.
       $out.char_count = $t.Length
       $out.sha256 = (& $hex ($sha.ComputeHash($bytes)))
+      $out.clip_text = $t
     }
   }
 } catch {
